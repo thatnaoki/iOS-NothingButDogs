@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>512270346253-21cha0g3s0on9tqfr5dmf5uq7rt7umbn.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.512270346253-21cha0g3s0on9tqfr5dmf5uq7rt7umbn</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDrS3Q3oCXH7bWHuC_lP8SH_2OT8f1x4kQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>512270346253</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.thatnaoki.NothingButDogs</string>
+	<key>PROJECT_ID</key>
+	<string>nothingbutdogs-e87e5</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nothingbutdogs-e87e5.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:512270346253:ios:f607cb24cbcab0de</string>
+	<key>DATABASE_URL</key>
+	<string>https://nothingbutdogs-e87e5.firebaseio.com</string>
+</dict>
+</plist>

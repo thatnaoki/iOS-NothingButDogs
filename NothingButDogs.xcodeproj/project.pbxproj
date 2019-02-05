@@ -7,21 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51FE5C3D1DD9F806A49CB530 /* Pods_NothingButDogs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D92B22BEBCA3E57809EC913 /* Pods_NothingButDogs.framework */; };
 		B0F191F322028C2200894726 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F191F222028C2200894726 /* AppDelegate.swift */; };
-		B0F191F522028C2200894726 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F191F422028C2200894726 /* ViewController.swift */; };
+		B0F191F522028C2200894726 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F191F422028C2200894726 /* SigninViewController.swift */; };
 		B0F191F822028C2200894726 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0F191F622028C2200894726 /* Main.storyboard */; };
 		B0F191FA22028C2400894726 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0F191F922028C2400894726 /* Assets.xcassets */; };
 		B0F191FD22028C2400894726 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0F191FB22028C2400894726 /* LaunchScreen.storyboard */; };
+		B0F1920822028D3600894726 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1920722028D3600894726 /* Post.swift */; };
+		B0F1920A22028D4200894726 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1920922028D4200894726 /* User.swift */; };
+		B0F1920E22028D9900894726 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1920C22028D9900894726 /* PostTableViewCell.swift */; };
+		B0F1920F22028D9900894726 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F1920D22028D9900894726 /* PostTableViewCell.xib */; };
+		B0F1921322028F9700894726 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0F1921222028F9700894726 /* GoogleService-Info.plist */; };
+		B0F19215220295F100894726 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F19214220295F100894726 /* SignupViewController.swift */; };
+		B0F19217220299A900894726 /* PostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F19216220299A900894726 /* PostTableViewController.swift */; };
+		B0F192192202A08500894726 /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F192182202A08500894726 /* ChooseImageViewController.swift */; };
+		B0F1921B2202A7DF00894726 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1921A2202A7DF00894726 /* CreatePostViewController.swift */; };
+		B0F1921D2202D1AE00894726 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B0F1921C2202D1AE00894726 /* Inceptionv3.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D92B22BEBCA3E57809EC913 /* Pods_NothingButDogs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NothingButDogs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9098A2228D552239337A5AD /* Pods-NothingButDogs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NothingButDogs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NothingButDogs/Pods-NothingButDogs.debug.xcconfig"; sourceTree = "<group>"; };
 		B0F191EF22028C2200894726 /* NothingButDogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NothingButDogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0F191F222028C2200894726 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B0F191F422028C2200894726 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B0F191F422028C2200894726 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		B0F191F722028C2200894726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B0F191F922028C2400894726 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0F191FC22028C2400894726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0F191FE22028C2400894726 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0F1920722028D3600894726 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		B0F1920922028D4200894726 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B0F1920C22028D9900894726 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		B0F1920D22028D9900894726 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		B0F1921222028F9700894726 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B0F19214220295F100894726 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		B0F19216220299A900894726 /* PostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewController.swift; sourceTree = "<group>"; };
+		B0F192182202A08500894726 /* ChooseImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
+		B0F1921A2202A7DF00894726 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		B0F1921C2202D1AE00894726 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
+		E9867E55F99C095A10A8BCD0 /* Pods-NothingButDogs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NothingButDogs.release.xcconfig"; path = "Pods/Target Support Files/Pods-NothingButDogs/Pods-NothingButDogs.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +53,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51FE5C3D1DD9F806A49CB530 /* Pods_NothingButDogs.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		055122C5B65B781370164FAD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A9098A2228D552239337A5AD /* Pods-NothingButDogs.debug.xcconfig */,
+				E9867E55F99C095A10A8BCD0 /* Pods-NothingButDogs.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B0F191E622028C2200894726 = {
 			isa = PBXGroup;
 			children = (
 				B0F191F122028C2200894726 /* NothingButDogs */,
 				B0F191F022028C2200894726 /* Products */,
+				055122C5B65B781370164FAD /* Pods */,
+				F1E29B868C969136ADAF0812 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +90,64 @@
 		B0F191F122028C2200894726 /* NothingButDogs */ = {
 			isa = PBXGroup;
 			children = (
-				B0F191F222028C2200894726 /* AppDelegate.swift */,
-				B0F191F422028C2200894726 /* ViewController.swift */,
-				B0F191F622028C2200894726 /* Main.storyboard */,
+				B0F1920622028D2600894726 /* Model */,
+				B0F1920422028CCC00894726 /* Controller */,
+				B0F1920522028D1400894726 /* View */,
 				B0F191F922028C2400894726 /* Assets.xcassets */,
-				B0F191FB22028C2400894726 /* LaunchScreen.storyboard */,
+				B0F1921C2202D1AE00894726 /* Inceptionv3.mlmodel */,
+				B0F1921222028F9700894726 /* GoogleService-Info.plist */,
 				B0F191FE22028C2400894726 /* Info.plist */,
 			);
 			path = NothingButDogs;
+			sourceTree = "<group>";
+		};
+		B0F1920422028CCC00894726 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B0F191F222028C2200894726 /* AppDelegate.swift */,
+				B0F191F422028C2200894726 /* SigninViewController.swift */,
+				B0F19214220295F100894726 /* SignupViewController.swift */,
+				B0F19216220299A900894726 /* PostTableViewController.swift */,
+				B0F192182202A08500894726 /* ChooseImageViewController.swift */,
+				B0F1921A2202A7DF00894726 /* CreatePostViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B0F1920522028D1400894726 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B0F1920B22028D6F00894726 /* Cell */,
+				B0F191F622028C2200894726 /* Main.storyboard */,
+				B0F191FB22028C2400894726 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B0F1920622028D2600894726 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B0F1920722028D3600894726 /* Post.swift */,
+				B0F1920922028D4200894726 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B0F1920B22028D6F00894726 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B0F1920C22028D9900894726 /* PostTableViewCell.swift */,
+				B0F1920D22028D9900894726 /* PostTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		F1E29B868C969136ADAF0812 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D92B22BEBCA3E57809EC913 /* Pods_NothingButDogs.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +157,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B0F1920122028C2400894726 /* Build configuration list for PBXNativeTarget "NothingButDogs" */;
 			buildPhases = (
+				435C29F4B7E914BCA5B4F9A8 /* [CP] Check Pods Manifest.lock */,
 				B0F191EB22028C2200894726 /* Sources */,
 				B0F191EC22028C2200894726 /* Frameworks */,
 				B0F191ED22028C2200894726 /* Resources */,
+				B3694A8C22B7C8425C6DCCFB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -124,18 +212,91 @@
 			files = (
 				B0F191FD22028C2400894726 /* LaunchScreen.storyboard in Resources */,
 				B0F191FA22028C2400894726 /* Assets.xcassets in Resources */,
+				B0F1921322028F9700894726 /* GoogleService-Info.plist in Resources */,
 				B0F191F822028C2200894726 /* Main.storyboard in Resources */,
+				B0F1920F22028D9900894726 /* PostTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		435C29F4B7E914BCA5B4F9A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NothingButDogs-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3694A8C22B7C8425C6DCCFB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NothingButDogs/Pods-NothingButDogs-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NothingButDogs/Pods-NothingButDogs-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B0F191EB22028C2200894726 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0F191F522028C2200894726 /* ViewController.swift in Sources */,
+				B0F19215220295F100894726 /* SignupViewController.swift in Sources */,
+				B0F1920A22028D4200894726 /* User.swift in Sources */,
+				B0F1920822028D3600894726 /* Post.swift in Sources */,
+				B0F1920E22028D9900894726 /* PostTableViewCell.swift in Sources */,
+				B0F191F522028C2200894726 /* SigninViewController.swift in Sources */,
+				B0F1921D2202D1AE00894726 /* Inceptionv3.mlmodel in Sources */,
+				B0F192192202A08500894726 /* ChooseImageViewController.swift in Sources */,
+				B0F1921B2202A7DF00894726 /* CreatePostViewController.swift in Sources */,
+				B0F19217220299A900894726 /* PostTableViewController.swift in Sources */,
 				B0F191F322028C2200894726 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +441,7 @@
 		};
 		B0F1920222028C2400894726 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9098A2228D552239337A5AD /* Pods-NothingButDogs.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +460,7 @@
 		};
 		B0F1920322028C2400894726 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9867E55F99C095A10A8BCD0 /* Pods-NothingButDogs.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
