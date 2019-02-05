@@ -39,7 +39,7 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
                 SVProgressHUD.dismiss()
                 self.performSegue(withIdentifier: "signinToHome", sender: nil)
             }
-            
+
         }
         
     }

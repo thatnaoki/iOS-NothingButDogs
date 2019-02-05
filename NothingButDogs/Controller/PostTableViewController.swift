@@ -26,72 +26,74 @@ class PostTableViewController: UITableViewController {
         
         SVProgressHUD.show()
         configureTableview()
-        setDataToArray() {postArray in
-            
-            print("リロードのタイミング")
-            print(postArray)
-            self.tableView.reloadData()
-            SVProgressHUD.dismiss()
-            
-        }
+        setDataToArray()
+//        setDataToArray() {postArray in
+//
+//            print("リロードのタイミング")
+//            print(postArray)
+//            self.tableView.reloadData()
+//            SVProgressHUD.dismiss()
+//
+//        }
         
     }
     
     @objc func pullToRefresh() {
         
-        setDataToArray() {postArray in
-            
-            print("リロードのタイミング")
-            print(postArray)
-            self.tableView.reloadData()
-            SVProgressHUD.dismiss()
-            
-        }
-        refreshControl?.endRefreshing()
-        
-    }
-    
-    func setDataToArray(completion: @escaping ([Post]) -> Void) {
-        
-        postArray.removeAll()
-        print("removeAllのタイミング")
-        
-        retrieveData() { post in
-            print("postArrayへのappendのタイミング")
-            self.postArray.append(post)
-        }
-        
-        completion(self.postArray)
-        
-    }
-    
-    //MARK: データが揃ってから、グローバルのarrayにセットしてreloadする
-//    func setDataToArray() {
-//
-//        postArray.removeAll()
-//        print("removeAllのタイミング")
-//
-//        let group = DispatchGroup()
-//        retrieveData() { post in
-//            group.enter()
-////            print(post)
-//            print("postArrayへのappendのタイミング")
-//            self.postArray.append(post)
-//            group.leave()
-//        }
-//
-//
-//        group.notify(queue: .main) {
+//        setDataToArray() {postArray in
 //
 //            print("リロードのタイミング")
-//            print(self.postArray)
+//            print(postArray)
 //            self.tableView.reloadData()
 //            SVProgressHUD.dismiss()
 //
 //        }
+        setDataToArray()
+        refreshControl?.endRefreshing()
+        
+    }
+    
+//    func setDataToArray(completion: @escaping ([Post]) -> Void) {
 //
+//        postArray.removeAll()
+//        print("removeAllのタイミング")
+//
+//        retrieveData() { post in
+//            print("postArrayへのappendのタイミング")
+//            self.postArray.append(post)
+//        }
+//
+//        completion(self.postArray)
 //
 //    }
+    
+    //MARK: データが揃ってから、グローバルのarrayにセットしてreloadする
+    func setDataToArray() {
+
+        postArray.removeAll()
+        print("removeAllのタイミング")
+
+        let group = DispatchGroup()
+        retrieveData() { post in
+            group.enter()
+//            print(post)
+            print("postArrayへのappendのタイミング")
+            self.postArray.append(post)
+            group.leave()
+        }
+
+
+        group.notify(queue: .main) {
+
+            print("リロードのタイミング")
+            print(self.postArray)
+            self.tableView.reloadData()
+            SVProgressHUD.dismiss()
+
+        }
+
+
+    }
     
     
     //MARK: データベースからポストを取得する
