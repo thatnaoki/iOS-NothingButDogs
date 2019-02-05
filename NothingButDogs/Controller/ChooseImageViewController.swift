@@ -55,7 +55,12 @@ class ChooseImageViewController: UIViewController, UINavigationControllerDelegat
             
         }
         //キャンセル用意
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {(action: UIAlertAction) in
+            
+            self.nextButton.tintColor = UIColor.clear
+            
+        })
+        
         alertController.addAction(cancelAction)
         
         alertController.popoverPresentationController?.sourceView = view

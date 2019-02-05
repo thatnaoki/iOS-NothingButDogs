@@ -26,31 +26,72 @@ class PostTableViewController: UITableViewController {
         
         SVProgressHUD.show()
         configureTableview()
-        setDataToArray()
+        setDataToArray() {postArray in
+            
+            print("リロードのタイミング")
+            print(postArray)
+            self.tableView.reloadData()
+            SVProgressHUD.dismiss()
+            
+        }
+        
     }
     
     @objc func pullToRefresh() {
         
-        setDataToArray()
+        setDataToArray() {postArray in
+            
+            print("リロードのタイミング")
+            print(postArray)
+            self.tableView.reloadData()
+            SVProgressHUD.dismiss()
+            
+        }
         refreshControl?.endRefreshing()
         
     }
     
-    //MARK: データが揃ってから、グローバルのarrayにセットしてreloadする
-    func setDataToArray() {
+    func setDataToArray(completion: @escaping ([Post]) -> Void) {
         
         postArray.removeAll()
+        print("removeAllのタイミング")
         
-        retrieveData() { (post) in
-            print(post)
+        retrieveData() { post in
+            print("postArrayへのappendのタイミング")
             self.postArray.append(post)
         }
         
-        print(self.postArray)
-        self.tableView.reloadData()
-        SVProgressHUD.dismiss()
-    
+        completion(self.postArray)
+        
     }
+    
+    //MARK: データが揃ってから、グローバルのarrayにセットしてreloadする
+//    func setDataToArray() {
+//
+//        postArray.removeAll()
+//        print("removeAllのタイミング")
+//
+//        let group = DispatchGroup()
+//        retrieveData() { post in
+//            group.enter()
+////            print(post)
+//            print("postArrayへのappendのタイミング")
+//            self.postArray.append(post)
+//            group.leave()
+//        }
+//
+//
+//        group.notify(queue: .main) {
+//
+//            print("リロードのタイミング")
+//            print(self.postArray)
+//            self.tableView.reloadData()
+//            SVProgressHUD.dismiss()
+//
+//        }
+//
+//
+//    }
     
     
     //MARK: データベースからポストを取得する
@@ -66,9 +107,7 @@ class PostTableViewController: UITableViewController {
                     let data = document.data()
                     let userId = data["userId"] as? String
                     let postImage = data["postImageURL"] as? String
-                    let postText = data["postText"] as? String
                     let createdAt = data["createdAt"] as? String
-                    let numberOfLike = data["numberOfLike"] as? Int
                     //投稿に紐づくユーザーデータを取得して合わせてpostArrayに挿入
                     let docRef = self.db.collection("users").document(userId!)
                     
@@ -77,19 +116,17 @@ class PostTableViewController: UITableViewController {
                             
                             let data = document.data()!
                             let userName = data["userName"] as? String
-                            let userImage = data["userImageURL"] as? String
                             
                             let post = Post(
                                 userId: userId!,
                                 userName: userName!,
-                                userImageURL: userImage!,
                                 postImageURL: postImage!,
-                                postText: postText!,
-                                createdAt: createdAt!,
-                                numberOfLike: numberOfLike!)
+                                createdAt: createdAt!
+                                )
                             
-                            print(post)
+//                            print(post)
                             completion(post)
+                            
                         }
                     }
                 }
@@ -128,14 +165,9 @@ extension PostTableViewController {
         }catch let err {
             print("Error : \(err.localizedDescription)")
         }
-        // テキスト挿入
-        cell.postText.text = post.postText
-        
         cell.userName.text = post.userName
         
         cell.createdAt.text = post.createdAt
-        
-        cell.postLikeButton.titleLabel?.text = "\(post.numberOfLike) Likes"
         
         return cell
     }
@@ -149,7 +181,7 @@ extension PostTableViewController {
     func configureTableview() {
         tableView.register(UINib(nibName: "PostTableViewCell", bundle: nil), forCellReuseIdentifier: "postCell")
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 400
+        tableView.estimatedRowHeight = 500
     }
     
 }

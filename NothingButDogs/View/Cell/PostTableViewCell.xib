@@ -20,67 +20,41 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vdo-4P-P8d">
-                        <rect key="frame" x="8" y="51" width="304" height="250"/>
+                        <rect key="frame" x="8" y="53.5" width="304" height="388"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="250" id="muk-CV-FUC"/>
+                            <constraint firstAttribute="height" constant="388" id="ixV-Y9-iPm"/>
+                            <constraint firstAttribute="width" constant="304" id="lTO-oW-QlF"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhm-5L-b2T">
-                        <rect key="frame" x="8" y="309" width="304" height="100"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cx6-24-F3l">
-                        <rect key="frame" x="100" y="411" width="120" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="30" id="EBT-QT-mhr"/>
-                            <constraint firstAttribute="width" constant="120" id="kEg-b7-7ec"/>
-                        </constraints>
-                        <state key="normal" title="23 Likes"/>
-                        <connections>
-                            <action selector="likeButtonPressed:" destination="4y0-fI-EAP" eventType="touchUpInside" id="V3u-eo-0NR"/>
-                        </connections>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created at" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a92-aJ-QZ3">
-                        <rect key="frame" x="152" y="16" width="160" height="18"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="160" id="Qnn-I2-f96"/>
-                        </constraints>
+                        <rect key="frame" x="252.5" y="16" width="59.5" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ti-8q-iS4">
-                        <rect key="frame" x="16" y="16" width="85.5" height="21"/>
+                        <rect key="frame" x="16" y="16" width="85.5" height="21.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="vdo-4P-P8d" firstAttribute="top" secondItem="3Ti-8q-iS4" secondAttribute="bottom" constant="14" id="E2o-6y-1oF"/>
-                    <constraint firstItem="cx6-24-F3l" firstAttribute="top" secondItem="Qhm-5L-b2T" secondAttribute="bottom" constant="2" id="GT1-cy-FwE"/>
-                    <constraint firstAttribute="trailing" secondItem="Qhm-5L-b2T" secondAttribute="trailing" constant="8" id="IuU-fO-UcP"/>
-                    <constraint firstItem="a92-aJ-QZ3" firstAttribute="leading" secondItem="3Ti-8q-iS4" secondAttribute="trailing" constant="50.5" id="JZM-EY-LxC"/>
-                    <constraint firstAttribute="trailing" secondItem="vdo-4P-P8d" secondAttribute="trailing" constant="8" id="Keh-Zc-Iwb"/>
-                    <constraint firstItem="a92-aJ-QZ3" firstAttribute="top" secondItem="pxZ-Tg-FGP" secondAttribute="top" constant="16" id="Mz2-0Y-sdN"/>
-                    <constraint firstAttribute="trailing" secondItem="a92-aJ-QZ3" secondAttribute="trailing" constant="8" id="Uoe-rm-bgX"/>
-                    <constraint firstItem="vdo-4P-P8d" firstAttribute="top" secondItem="a92-aJ-QZ3" secondAttribute="bottom" constant="17" id="WmU-iS-tOB"/>
-                    <constraint firstAttribute="bottom" secondItem="cx6-24-F3l" secondAttribute="bottom" constant="8.5" id="X6y-TZ-oRq"/>
-                    <constraint firstItem="Qhm-5L-b2T" firstAttribute="leading" secondItem="pxZ-Tg-FGP" secondAttribute="leading" constant="8" id="dsL-T4-Dr5"/>
-                    <constraint firstItem="vdo-4P-P8d" firstAttribute="leading" secondItem="pxZ-Tg-FGP" secondAttribute="leading" constant="8" id="iXX-6H-H65"/>
-                    <constraint firstItem="Qhm-5L-b2T" firstAttribute="top" secondItem="vdo-4P-P8d" secondAttribute="bottom" constant="8" id="izm-0i-elt"/>
-                    <constraint firstItem="3Ti-8q-iS4" firstAttribute="top" secondItem="pxZ-Tg-FGP" secondAttribute="top" constant="16" id="nlL-hh-SmA"/>
-                    <constraint firstItem="cx6-24-F3l" firstAttribute="centerX" secondItem="pxZ-Tg-FGP" secondAttribute="centerX" id="z8n-DB-XMn"/>
+                    <constraint firstAttribute="bottom" secondItem="vdo-4P-P8d" secondAttribute="bottom" constant="8" id="QhC-2f-0jX"/>
+                    <constraint firstItem="vdo-4P-P8d" firstAttribute="top" secondItem="3Ti-8q-iS4" secondAttribute="bottom" constant="16" id="Vol-fh-4Eo"/>
+                    <constraint firstAttribute="trailing" secondItem="a92-aJ-QZ3" secondAttribute="trailing" constant="8" id="ZGW-AY-AZG"/>
+                    <constraint firstItem="3Ti-8q-iS4" firstAttribute="top" secondItem="pxZ-Tg-FGP" secondAttribute="top" constant="16" id="apz-sr-8mx"/>
+                    <constraint firstItem="3Ti-8q-iS4" firstAttribute="leading" secondItem="pxZ-Tg-FGP" secondAttribute="leading" constant="16" id="ixN-g3-Bai"/>
+                    <constraint firstItem="a92-aJ-QZ3" firstAttribute="top" secondItem="pxZ-Tg-FGP" secondAttribute="top" constant="16" id="n9H-rv-7Yq"/>
+                    <constraint firstItem="a92-aJ-QZ3" firstAttribute="leading" secondItem="3Ti-8q-iS4" secondAttribute="trailing" constant="151" id="pKJ-HH-Wnd"/>
+                    <constraint firstItem="vdo-4P-P8d" firstAttribute="leading" secondItem="pxZ-Tg-FGP" secondAttribute="leading" constant="8" id="tYq-Ed-IMK"/>
+                    <constraint firstAttribute="trailing" secondItem="vdo-4P-P8d" secondAttribute="trailing" constant="8" id="zzF-pt-Hcw"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="gnq-qK-cTx"/>
             <connections>
                 <outlet property="createdAt" destination="a92-aJ-QZ3" id="9gn-2G-UAj"/>
                 <outlet property="postImage" destination="vdo-4P-P8d" id="Yxh-qb-a7V"/>
-                <outlet property="postLikeButton" destination="cx6-24-F3l" id="NEI-id-iWU"/>
-                <outlet property="postText" destination="Qhm-5L-b2T" id="BxA-as-gez"/>
                 <outlet property="userName" destination="3Ti-8q-iS4" id="uLZ-YG-1eb"/>
             </connections>
             <point key="canvasLocation" x="89.599999999999994" y="168.21589205397302"/>

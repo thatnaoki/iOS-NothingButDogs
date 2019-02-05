@@ -12,10 +12,7 @@ struct Post {
     
     var userId: String
     var userName: String
-    var userImageURL: String
     var postImageURL: String
-    var postText: String
     var createdAt: String
-    var numberOfLike: Int
     
 }

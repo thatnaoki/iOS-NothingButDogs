@@ -22,7 +22,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        signupButton.layer.cornerRadius = 30.0
+        signupButton.layer.cornerRadius = 20.0
         
         emailTextField.delegate = self
         usernameTextField.delegate = self
@@ -40,14 +40,18 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                 print(error!)
             } else {
                 print("Signup Successful!")
+                //userdefaultにuser情報保存
+                let userDefault = UserDefaults.standard
+                userDefault.register(defaults: ["id" : self.emailTextField.text!])
+                userDefault.register(defaults: ["password" : self.passwordTextField.text!])
                 
+                //Firebaseでuser document作成
                 let user = Auth.auth().currentUser
                 
                 if let user = user {
                     self.db.collection("users").document(user.uid).setData([
-                        "userName" : self.usernameTextField.text!,
-                        "userImageURL" : "https://firebasestorage.googleapis.com/v0/b/nothingbutdogs-e87e5.appspot.com/o/images%2F17004.svg?alt=media&token=17a8ba8c-1ce6-4ab9-9028-64e2a78fe374"])
-                    
+                        "userName" : self.usernameTextField.text!
+                    ])
                 }
                 SVProgressHUD.dismiss()
                 self.performSegue(withIdentifier: "signupToHome", sender: self)

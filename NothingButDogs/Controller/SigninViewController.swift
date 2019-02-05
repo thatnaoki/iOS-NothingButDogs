@@ -19,10 +19,10 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        signinButton.layer.cornerRadius = 20.0
+        
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
-        signinButton.layer.cornerRadius = 20.0
     }
 
     
