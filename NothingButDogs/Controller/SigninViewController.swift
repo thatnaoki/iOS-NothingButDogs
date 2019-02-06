@@ -19,6 +19,10 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if Auth.auth().currentUser != nil {
+            self.performSegue(withIdentifier: "signinToHome", sender: nil)
+        }
+        
         signinButton.layer.cornerRadius = 20.0
         
         emailTextField.delegate = self

@@ -18,11 +18,14 @@ class PostTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //バックボタン隠す
+        navigationItem.backBarButtonItem = nil
+        navigationItem.hidesBackButton = true
+        
         //MARK: プルリフレッシュ
         self.refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         self.tableView.addSubview(self.refreshControl!)
-        self.navigationItem.hidesBackButton = true
         
         SVProgressHUD.show()
         configureTableview()

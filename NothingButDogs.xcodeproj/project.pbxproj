@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		51FE5C3D1DD9F806A49CB530 /* Pods_NothingButDogs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D92B22BEBCA3E57809EC913 /* Pods_NothingButDogs.framework */; };
+		B02FD00B2209EE1E002C79BB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02FD00A2209EE1E002C79BB /* ProfileViewController.swift */; };
 		B0F191F322028C2200894726 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F191F222028C2200894726 /* AppDelegate.swift */; };
 		B0F191F522028C2200894726 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F191F422028C2200894726 /* SigninViewController.swift */; };
 		B0F191F822028C2200894726 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0F191F622028C2200894726 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		0D92B22BEBCA3E57809EC913 /* Pods_NothingButDogs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NothingButDogs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9098A2228D552239337A5AD /* Pods-NothingButDogs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NothingButDogs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NothingButDogs/Pods-NothingButDogs.debug.xcconfig"; sourceTree = "<group>"; };
+		B02FD00A2209EE1E002C79BB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B0F191EF22028C2200894726 /* NothingButDogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NothingButDogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0F191F222028C2200894726 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0F191F422028C2200894726 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				B0F19216220299A900894726 /* PostTableViewController.swift */,
 				B0F192182202A08500894726 /* ChooseImageViewController.swift */,
 				B0F1921A2202A7DF00894726 /* CreatePostViewController.swift */,
+				B02FD00A2209EE1E002C79BB /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				B0F1920E22028D9900894726 /* PostTableViewCell.swift in Sources */,
 				B0F191F522028C2200894726 /* SigninViewController.swift in Sources */,
 				B0F1921D2202D1AE00894726 /* Inceptionv3.mlmodel in Sources */,
+				B02FD00B2209EE1E002C79BB /* ProfileViewController.swift in Sources */,
 				B0F192192202A08500894726 /* ChooseImageViewController.swift in Sources */,
 				B0F1921B2202A7DF00894726 /* CreatePostViewController.swift in Sources */,
 				B0F19217220299A900894726 /* PostTableViewController.swift in Sources */,

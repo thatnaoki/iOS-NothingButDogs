@@ -94,7 +94,7 @@
                         <outlet property="emailTextField" destination="G8y-kQ-fhV" id="S4v-Lc-bTu"/>
                         <outlet property="passwordTextField" destination="NuG-cG-ktM" id="qPz-li-3jF"/>
                         <outlet property="signinButton" destination="JBd-c3-05m" id="m2Y-5a-JA5"/>
-                        <segue destination="Dj8-Xg-Dhn" kind="show" identifier="signinToHome" id="oq6-eG-bHS"/>
+                        <segue destination="NYK-ih-Gdj" kind="show" identifier="signinToHome" id="oq6-eG-bHS"/>
                         <segue destination="Sjx-aK-scV" kind="show" identifier="signinToSignup" id="IQo-3D-vQ3"/>
                     </connections>
                 </viewController>
@@ -125,6 +125,11 @@
                             <outlet property="delegate" destination="Dj8-Xg-Dhn" id="9HI-37-snh"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="T82-OZ-llE">
+                        <string key="landscapeImage" base64-UTF8="YES">
+EBA
+</string>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" title="Home" id="KiA-Z2-9vo">
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="Vdg-p5-rzj">
                             <connections>
@@ -139,7 +144,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6to-xl-SbL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3657" y="134"/>
+            <point key="canvasLocation" x="4602" y="-387"/>
         </scene>
         <!--Choose an Image-->
         <scene sceneID="JUq-ef-BHs">
@@ -177,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0n9-gx-Ohr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4608.8000000000002" y="133.5832083958021"/>
+            <point key="canvasLocation" x="5554" y="-387"/>
         </scene>
         <!--Create Post View Controller-->
         <scene sceneID="UsP-LC-qHn">
@@ -246,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wIQ-fV-ERh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5616.8000000000002" y="133.5832083958021"/>
+            <point key="canvasLocation" x="6562" y="-387"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iaH-o7-txB">
@@ -364,15 +369,103 @@
                         <outlet property="passwordTextField" destination="2Uq-2s-KKU" id="6sC-RL-Ftg"/>
                         <outlet property="signupButton" destination="Dru-Rz-PtI" id="ncZ-4Z-Db1"/>
                         <outlet property="usernameTextField" destination="S6b-ay-S4l" id="m7e-9G-KF9"/>
-                        <segue destination="Dj8-Xg-Dhn" kind="show" identifier="signupToHome" id="Jsf-hp-eK9"/>
+                        <segue destination="NYK-ih-Gdj" kind="show" identifier="signupToHome" id="Jsf-hp-eK9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dUd-mb-0S9" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2362" y="-466"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="l03-Ii-1n6">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="NYK-ih-Gdj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nQH-6Y-gGF">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Dj8-Xg-Dhn" kind="relationship" relationship="viewControllers" id="ccD-tJ-Q48"/>
+                        <segue destination="fY1-la-27I" kind="relationship" relationship="viewControllers" id="ymb-FU-u0P"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6oA-Uo-0lP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3656.8000000000002" y="133.5832083958021"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="woA-VT-phc">
+            <objects>
+                <viewController id="fY1-la-27I" customClass="ProfileViewController" customModule="NothingButDogs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OmH-Ns-APx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2I-wr-nXG">
+                                <rect key="frame" x="145.5" y="184" width="84" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sJK-Sl-9rW">
+                                <rect key="frame" x="67.5" y="225" width="240" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="WtD-L0-0Bv"/>
+                                    <constraint firstAttribute="height" constant="30" id="xnU-Ok-DiJ"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tyc-La-hOa">
+                                <rect key="frame" x="112.5" y="493" width="150" height="40"/>
+                                <color key="backgroundColor" red="0.018645260479999998" green="0.4776622653" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5eP-Q3-KDf"/>
+                                    <constraint firstAttribute="width" constant="150" id="vLZ-FB-hZK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="signinButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qgv-Fe-eDH"/>
+                                    <action selector="updateButtonPressed:" destination="fY1-la-27I" eventType="touchUpInside" id="irH-aN-jC1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Kf5-vh-WnI" firstAttribute="bottom" secondItem="Tyc-La-hOa" secondAttribute="bottom" constant="85" id="6RE-vG-PgI"/>
+                            <constraint firstItem="sJK-Sl-9rW" firstAttribute="centerX" secondItem="OmH-Ns-APx" secondAttribute="centerX" id="G5q-fa-xKA"/>
+                            <constraint firstItem="sJK-Sl-9rW" firstAttribute="top" secondItem="T2I-wr-nXG" secondAttribute="bottom" constant="20" id="T7E-cS-SWv"/>
+                            <constraint firstItem="T2I-wr-nXG" firstAttribute="centerX" secondItem="OmH-Ns-APx" secondAttribute="centerX" id="Tip-Dt-2GO"/>
+                            <constraint firstItem="T2I-wr-nXG" firstAttribute="top" secondItem="Kf5-vh-WnI" secondAttribute="top" constant="120" id="mDa-Yk-dBi"/>
+                            <constraint firstItem="Tyc-La-hOa" firstAttribute="centerX" secondItem="OmH-Ns-APx" secondAttribute="centerX" id="zmc-wq-N73"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kf5-vh-WnI"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile" id="cwe-lf-myA"/>
+                    <connections>
+                        <outlet property="updateButton" destination="Tyc-La-hOa" id="uiW-aT-A9Y"/>
+                        <outlet property="userNameTextField" destination="sJK-Sl-9rW" id="j5h-wo-Ico"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lco-cv-hdI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4604" y="593.25337331334333"/>
+        </scene>
     </scenes>
+    <resources>
+        <image width="16" height="16">
+            <string key="name" base64-UTF8="YES">
+EBA
+</string>
+        </image>
+        <image name="home" width="14.399999618530273" height="14.399999618530273"/>
+        <image name="profile" width="14.399999618530273" height="14.399999618530273"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oq6-eG-bHS"/>
+        <segue reference="Jsf-hp-eK9"/>
     </inferredMetricsTieBreakers>
 </document>
