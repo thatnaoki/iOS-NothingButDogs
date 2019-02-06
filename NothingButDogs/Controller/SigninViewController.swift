@@ -18,7 +18,7 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if Auth.auth().currentUser != nil {
+        if auth.currentUser != nil {
             self.performSegue(withIdentifier: "signinToHome", sender: nil)
         }
         
