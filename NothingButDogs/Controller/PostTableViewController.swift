@@ -7,12 +7,9 @@
 //
 
 import UIKit
-import Firebase
 import SVProgressHUD
 
 class PostTableViewController: UITableViewController {
-    
-    let db = Firestore.firestore()
     
     var postArray: [Post] = [Post]()
 
@@ -114,7 +111,7 @@ class PostTableViewController: UITableViewController {
                     let postImage = data["postImageURL"] as? String
                     let createdAt = data["createdAt"] as? String
                     //投稿に紐づくユーザーデータを取得して合わせてpostArrayに挿入
-                    let docRef = self.db.collection("users").document(userId!)
+                    let docRef = db.collection("users").document(userId!)
                     
                     docRef.getDocument() { (document, error) in
                         if let document = document, document.exists {

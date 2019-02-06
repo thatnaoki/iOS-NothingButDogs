@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class CreatePostViewController: UIViewController, UITextFieldDelegate {
 
@@ -15,9 +14,6 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var postTextField: UITextField!
     @IBOutlet weak var shareButton: UIButton!
-    
-    let db = Firestore.firestore()
-    let storage = Storage.storage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,11 +65,11 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
             f.timeStyle = .medium
             let now = Date()
             //ログイン中のユーザー取得
-            let user = Auth.auth().currentUser
+            let user = auth.currentUser
             
             if let user = user {
                 
-                self.db.collection("posts").document().setData([
+                db.collection("posts").document().setData([
                     "userId" : user.uid,
                     "postImageURL" : urlString!,
                     "postText" : self.postTextField.text!,

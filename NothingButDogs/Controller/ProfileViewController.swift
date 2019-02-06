@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import Firebase
 
 class ProfileViewController: UIViewController, UITextFieldDelegate {
 
-    let docRef = Firestore.firestore().collection("users").document((Auth.auth().currentUser?.uid)!)
+    let docRef = db.collection("users").document((auth.currentUser?.uid)!)
     
     @IBOutlet weak var updateButton: UIButton!
     

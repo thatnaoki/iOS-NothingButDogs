@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import SVProgressHUD
 
 class SigninViewController: UIViewController, UITextFieldDelegate {
@@ -34,7 +33,7 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
         
         SVProgressHUD.show()
         
-        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+        auth.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             
             if error != nil {
                 print(error!)

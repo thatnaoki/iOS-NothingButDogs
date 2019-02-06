@@ -11,8 +11,6 @@ import SVProgressHUD
 import Firebase
 
 class SignupViewController: UIViewController, UITextFieldDelegate {
-
-    let db = Firestore.firestore()
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -49,7 +47,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                 let user = Auth.auth().currentUser
                 
                 if let user = user {
-                    self.db.collection("users").document(user.uid).setData([
+                    db.collection("users").document(user.uid).setData([
                         "userName" : self.usernameTextField.text!
                     ])
                 }
