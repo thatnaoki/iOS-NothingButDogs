@@ -94,8 +94,8 @@
                         <outlet property="emailTextField" destination="G8y-kQ-fhV" id="S4v-Lc-bTu"/>
                         <outlet property="passwordTextField" destination="NuG-cG-ktM" id="qPz-li-3jF"/>
                         <outlet property="signinButton" destination="JBd-c3-05m" id="m2Y-5a-JA5"/>
-                        <segue destination="NYK-ih-Gdj" kind="show" identifier="signinToHome" id="oq6-eG-bHS"/>
                         <segue destination="Sjx-aK-scV" kind="show" identifier="signinToSignup" id="IQo-3D-vQ3"/>
+                        <segue destination="Dj8-Xg-Dhn" kind="show" identifier="signinToHome" id="HTv-i7-6OA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -144,7 +144,7 @@ EBA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6to-xl-SbL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4602" y="-387"/>
+            <point key="canvasLocation" x="3646" y="134"/>
         </scene>
         <!--Choose an Image-->
         <scene sceneID="JUq-ef-BHs">
@@ -182,7 +182,7 @@ EBA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0n9-gx-Ohr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5554" y="-387"/>
+            <point key="canvasLocation" x="4857" y="134"/>
         </scene>
         <!--Create Post View Controller-->
         <scene sceneID="UsP-LC-qHn">
@@ -215,43 +215,46 @@ EBA
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09e-aA-d2c">
-                                <rect key="frame" x="112.5" y="528" width="150" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEJ-er-Tuu">
+                                <rect key="frame" x="112.5" y="493" width="150" height="40"/>
                                 <color key="backgroundColor" red="0.018645260479999998" green="0.4776622653" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="2Vg-vP-o9T"/>
-                                    <constraint firstAttribute="width" constant="150" id="IUY-HO-A15"/>
+                                    <constraint firstAttribute="width" constant="150" id="4Cz-VQ-Qcu"/>
+                                    <constraint firstAttribute="height" constant="40" id="YGl-lG-gTj"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Share"/>
                                 <connections>
-                                    <action selector="shareButtonPressed:" destination="fWs-5s-PsM" eventType="touchUpInside" id="Vkb-9V-EUr"/>
+                                    <action selector="shareButtonPressed:" destination="fWs-5s-PsM" eventType="touchUpInside" id="Y0m-kL-AwV"/>
+                                    <action selector="signinButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lhr-so-tNE"/>
+                                    <action selector="updateButtonPressed:" destination="fY1-la-27I" eventType="touchUpInside" id="yNH-oI-MU4"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="PZN-b5-zE1" firstAttribute="bottom" secondItem="fEJ-er-Tuu" secondAttribute="bottom" constant="85" id="3CP-gO-eeY"/>
                             <constraint firstItem="2SW-re-TZ5" firstAttribute="centerX" secondItem="RmC-oB-i3v" secondAttribute="centerX" id="6Zb-fQ-HgD"/>
-                            <constraint firstItem="09e-aA-d2c" firstAttribute="top" secondItem="2SW-re-TZ5" secondAttribute="bottom" constant="60" id="A1R-JL-qmX"/>
                             <constraint firstItem="2SW-re-TZ5" firstAttribute="top" secondItem="tvO-Xf-M8h" secondAttribute="bottom" constant="10" id="LGH-Zf-A8a"/>
                             <constraint firstItem="tvO-Xf-M8h" firstAttribute="centerX" secondItem="RmC-oB-i3v" secondAttribute="centerX" id="Thw-Le-sok"/>
                             <constraint firstItem="tvO-Xf-M8h" firstAttribute="top" secondItem="oXc-RR-KwC" secondAttribute="bottom" constant="40" id="XEG-6x-pZa"/>
                             <constraint firstItem="oXc-RR-KwC" firstAttribute="top" secondItem="PZN-b5-zE1" secondAttribute="top" id="awg-um-3Jr"/>
                             <constraint firstItem="oXc-RR-KwC" firstAttribute="trailing" secondItem="PZN-b5-zE1" secondAttribute="trailing" id="eke-uo-SWR"/>
                             <constraint firstItem="oXc-RR-KwC" firstAttribute="leading" secondItem="PZN-b5-zE1" secondAttribute="leading" id="fEY-hX-pX3"/>
-                            <constraint firstItem="09e-aA-d2c" firstAttribute="centerX" secondItem="RmC-oB-i3v" secondAttribute="centerX" id="vWv-sY-m2i"/>
+                            <constraint firstItem="fEJ-er-Tuu" firstAttribute="centerX" secondItem="RmC-oB-i3v" secondAttribute="centerX" id="lm9-oh-Ekb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PZN-b5-zE1"/>
                     </view>
                     <connections>
                         <outlet property="postImage" destination="oXc-RR-KwC" id="pdL-jC-bbs"/>
                         <outlet property="postTextField" destination="2SW-re-TZ5" id="BZV-Ki-CQO"/>
-                        <outlet property="shareButton" destination="09e-aA-d2c" id="G8j-gc-i7e"/>
+                        <outlet property="shareButton" destination="fEJ-er-Tuu" id="YkN-Ae-2mS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wIQ-fV-ERh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6562" y="-387"/>
+            <point key="canvasLocation" x="6006" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iaH-o7-txB">
@@ -369,30 +372,12 @@ EBA
                         <outlet property="passwordTextField" destination="2Uq-2s-KKU" id="6sC-RL-Ftg"/>
                         <outlet property="signupButton" destination="Dru-Rz-PtI" id="ncZ-4Z-Db1"/>
                         <outlet property="usernameTextField" destination="S6b-ay-S4l" id="m7e-9G-KF9"/>
-                        <segue destination="NYK-ih-Gdj" kind="show" identifier="signupToHome" id="Jsf-hp-eK9"/>
+                        <segue destination="Dj8-Xg-Dhn" kind="show" identifier="signupToHome" id="JWP-ct-eiT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dUd-mb-0S9" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2362" y="-466"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="l03-Ii-1n6">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="NYK-ih-Gdj" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nQH-6Y-gGF">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="Dj8-Xg-Dhn" kind="relationship" relationship="viewControllers" id="ccD-tJ-Q48"/>
-                        <segue destination="fY1-la-27I" kind="relationship" relationship="viewControllers" id="ymb-FU-u0P"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6oA-Uo-0lP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3656.8000000000002" y="133.5832083958021"/>
         </scene>
         <!--Profile-->
         <scene sceneID="woA-VT-phc">
@@ -403,13 +388,13 @@ EBA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2I-wr-nXG">
-                                <rect key="frame" x="145.5" y="184" width="84" height="21"/>
+                                <rect key="frame" x="145.5" y="140" width="84" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sJK-Sl-9rW">
-                                <rect key="frame" x="67.5" y="225" width="240" height="30"/>
+                                <rect key="frame" x="67.5" y="181" width="240" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="WtD-L0-0Bv"/>
                                     <constraint firstAttribute="height" constant="30" id="xnU-Ok-DiJ"/>
@@ -419,7 +404,7 @@ EBA
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tyc-La-hOa">
-                                <rect key="frame" x="112.5" y="493" width="150" height="40"/>
+                                <rect key="frame" x="112.5" y="542" width="150" height="40"/>
                                 <color key="backgroundColor" red="0.018645260479999998" green="0.4776622653" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5eP-Q3-KDf"/>
@@ -453,7 +438,7 @@ EBA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lco-cv-hdI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4604" y="593.25337331334333"/>
+            <point key="canvasLocation" x="3646" y="1060"/>
         </scene>
     </scenes>
     <resources>
@@ -466,6 +451,6 @@ EBA
         <image name="profile" width="14.399999618530273" height="14.399999618530273"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jsf-hp-eK9"/>
+        <segue reference="HTv-i7-6OA"/>
     </inferredMetricsTieBreakers>
 </document>

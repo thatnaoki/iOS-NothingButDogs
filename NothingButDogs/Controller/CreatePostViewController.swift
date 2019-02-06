@@ -59,7 +59,8 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func shareButtonPressed(_ sender: Any) {
+    
+    @IBAction func shareButtonPressed(_ sender: UIButton) {
         
         setDataToStorage(postImage.image!) {urlString, _ in
             //データベースへの保存
@@ -83,9 +84,8 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         }
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
-    
-}
 
+}
 
 //MARK: キーボード閉じる系
 extension CreatePostViewController {
