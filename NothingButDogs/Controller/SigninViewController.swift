@@ -56,10 +56,6 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     
     
     //MARK: キーボード閉じる用
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         emailTextField.resignFirstResponder()

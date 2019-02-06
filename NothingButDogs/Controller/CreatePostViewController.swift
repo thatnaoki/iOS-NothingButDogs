@@ -86,11 +86,6 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
 //MARK: キーボード閉じる系
 extension CreatePostViewController {
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         postTextField.resignFirstResponder()

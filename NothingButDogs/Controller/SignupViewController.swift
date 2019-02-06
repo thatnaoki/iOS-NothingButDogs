@@ -57,11 +57,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //MARK: キーボード閉じる用
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
+    //MARK: キーボード閉じる用    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         usernameTextField.resignFirstResponder()
