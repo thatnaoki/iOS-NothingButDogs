@@ -24,88 +24,51 @@ class PostTableViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         self.tableView.addSubview(self.refreshControl!)
         
-        SVProgressHUD.show()
+        
         configureTableview()
         setDataToArray()
-//        setDataToArray() {postArray in
-//
-//            print("リロードのタイミング")
-//            print(postArray)
-//            self.tableView.reloadData()
-//            SVProgressHUD.dismiss()
-//
-//        }
-        
     }
     
     @objc func pullToRefresh() {
         
-//        setDataToArray() {postArray in
-//
-//            print("リロードのタイミング")
-//            print(postArray)
-//            self.tableView.reloadData()
-//            SVProgressHUD.dismiss()
-//
-//        }
         setDataToArray()
         refreshControl?.endRefreshing()
         
     }
     
-//    func setDataToArray(completion: @escaping ([Post]) -> Void) {
-//
-//        postArray.removeAll()
-//        print("removeAllのタイミング")
-//
-//        retrieveData() { post in
-//            print("postArrayへのappendのタイミング")
-//            self.postArray.append(post)
-//        }
-//
-//        completion(self.postArray)
-//
-//    }
-    
     //MARK: データが揃ってから、グローバルのarrayにセットしてreloadする
     func setDataToArray() {
-
+        SVProgressHUD.show()
         postArray.removeAll()
         print("removeAllのタイミング")
-
-        let group = DispatchGroup()
-        retrieveData() { post in
-            group.enter()
+        
+        retrieveData() { posts in
 //            print(post)
-            print("postArrayへのappendのタイミング")
-            self.postArray.append(post)
-            group.leave()
-        }
-
-
-        group.notify(queue: .main) {
-
-            print("リロードのタイミング")
+            print("postArrayへの代入のタイミング")
+            self.postArray = posts
             print(self.postArray)
+            print("reloaddataのタイミング")
+            //reloaddataは一回呼ぶだけで済むようにする
             self.tableView.reloadData()
             SVProgressHUD.dismiss()
-
         }
-
 
     }
     
-    
     //MARK: データベースからポストを取得する
-    func retrieveData(completion: @escaping (Post) -> Void) {
-        
-        let postsColRef = db.collection("posts").order(by: "createdAt")
+    //配列化する、理想は返す件数を指定できる仕様
+    func retrieveData(completion: @escaping ([Post]) -> Void) {
+    
+        var posts: [Post] = []
+        let postsColRef = db.collection("posts").order(by: "createdAt").limit(to: 5)
+        let group = DispatchGroup()
         
         postsColRef.getDocuments() { (querySnapshot, error) in
             if let error = error {
                 print("Document data: \(error)")
             } else {
                 for document in querySnapshot!.documents {
+                    group.enter()
                     let data = document.data()
                     let userId = data["userId"] as? String
                     let postImage = data["postImageURL"] as? String
@@ -124,13 +87,18 @@ class PostTableViewController: UITableViewController {
                                 userName: userName!,
                                 postImageURL: postImage!,
                                 createdAt: createdAt!
-                                )
+                            )
                             
-//                            print(post)
-                            completion(post)
-                            
+                            print("postsへのappendのタイミング")
+                            posts.append(post)
+                            group.leave()
                         }
                     }
+                }
+                group.notify(queue: .main) {
+                    print("completionが呼ばれるタイミング")
+                    print(posts)
+                    completion(posts)
                 }
             }
         }
@@ -160,13 +128,18 @@ extension PostTableViewController {
         let post = postArray[indexPath.row]
         // 画像を取得して挿入
         let postImageURL = URL(string: post.postImageURL)
-        
-        do {
-            let data = try Data(contentsOf: postImageURL!)
-            cell.postImage.image = UIImage(data: data)
-        }catch let err {
-            print("Error : \(err.localizedDescription)")
+        //Data(contentsOf)は同期処理なので非同期にする
+        DispatchQueue.global().async {
+            do {
+                let data = try Data(contentsOf: postImageURL!)
+                DispatchQueue.main.async {
+                    cell.postImage.image = UIImage(data: data)
+                }
+            } catch let err {
+                print("Error : \(err.localizedDescription)")
+            }
         }
+        
         cell.userName.text = post.userName
         
         cell.createdAt.text = post.createdAt

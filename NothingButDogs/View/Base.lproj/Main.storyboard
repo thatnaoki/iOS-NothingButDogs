@@ -125,11 +125,7 @@
                             <outlet property="delegate" destination="Dj8-Xg-Dhn" id="9HI-37-snh"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="T82-OZ-llE">
-                        <string key="landscapeImage" base64-UTF8="YES">
-EBA
-</string>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="T82-OZ-llE"/>
                     <navigationItem key="navigationItem" title="Home" id="KiA-Z2-9vo">
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="Vdg-p5-rzj">
                             <connections>
@@ -442,11 +438,6 @@ EBA
         </scene>
     </scenes>
     <resources>
-        <image width="16" height="16">
-            <string key="name" base64-UTF8="YES">
-EBA
-</string>
-        </image>
         <image name="home" width="14.399999618530273" height="14.399999618530273"/>
         <image name="profile" width="14.399999618530273" height="14.399999618530273"/>
     </resources>

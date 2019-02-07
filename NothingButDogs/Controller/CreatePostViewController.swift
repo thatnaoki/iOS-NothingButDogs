@@ -60,6 +60,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         
         setDataToStorage(postImage.image!) {urlString, _ in
             //データベースへの保存
+            //Dateの用意
             let f = DateFormatter()
             f.dateStyle = .medium
             f.timeStyle = .medium

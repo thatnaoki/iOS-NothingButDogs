@@ -78,4 +78,4 @@ fastlane/test_output
 iOSInjectionProject/
 
 # Google Related File
-GoogleService-Info.plist
+/NothingButDogs/GoogleService-Info.plist
