@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import SVProgressHUD
 
 class CreatePostViewController: UIViewController, UITextFieldDelegate {
 
@@ -17,6 +19,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("is this PostTableViewController? -> \(String(describing: self.presentingViewController?.presentingViewController))")
 
         shareButton.layer.cornerRadius = 20.0
         
@@ -58,7 +61,10 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
         
+        SVProgressHUD.show()
+        let group = DispatchGroup()
         setDataToStorage(postImage.image!) {urlString, _ in
+            group.enter()
             //データベースへの保存
             //Dateの用意
             let f = DateFormatter()
@@ -75,11 +81,22 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                     "postImageURL" : urlString!,
                     "postText" : self.postTextField.text!,
                     "numberOfLike" : 0,
-                    "createdAt" : f.string(from: now)
+                    "createdAt" : f.string(from: now),
+                    "timestamp": FieldValue.serverTimestamp()
                     ])
+            
             }
+            
+            group.leave()
+        
         }
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        group.notify(queue: .main) {
+        
+            SVProgressHUD.dismiss()
+            self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+            
+        }
+
     }
 
 }

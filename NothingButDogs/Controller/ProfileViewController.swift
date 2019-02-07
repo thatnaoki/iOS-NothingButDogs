@@ -22,7 +22,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         updateButton.layer.cornerRadius = 20.0
         userNameTextField.delegate = self
         
-        
         docRef.getDocument() { (document, error) in
             
             if let document = document, document.exists {

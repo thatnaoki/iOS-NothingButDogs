@@ -38,10 +38,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                 print(error!)
             } else {
                 print("Signup Successful!")
-                //userdefaultにuser情報保存
-//                let userDefault = UserDefaults.standard
-//                userDefault.register(defaults: ["id" : self.emailTextField.text!])
-//                userDefault.register(defaults: ["password" : self.passwordTextField.text!])
                 
                 //Firebaseでuser document作成
                 let user = Auth.auth().currentUser
