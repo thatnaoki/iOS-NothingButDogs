@@ -57,11 +57,7 @@ class ChooseImageViewController: UIViewController, UINavigationControllerDelegat
             
         }
         //キャンセル用意
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {(action: UIAlertAction) in
-            
-            
-            
-        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(cancelAction)
         

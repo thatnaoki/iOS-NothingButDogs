@@ -39,17 +39,27 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func updateButtonPressed(_ sender: UIButton) {
         
-        if let newUserName = userNameTextField.text {
+        if userNameTextField.text != "" {
             
-            docRef.updateData([
-                "userName" : newUserName
-            ]) { err in
-                if let err = err {
-                    print("Error updating document: \(err)")
-                } else {
-                    print("Document successfully updated")
+            if userNameTextField.text!.count <= 10 {
+                
+                docRef.updateData([
+                    "userName" : userNameTextField.text!
+                ]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Document successfully updated")
+                        self.showAlert(message: "Successfully updated!")
+                    }
                 }
+                
+            } else {
+                showAlert(message: "Names should be in 10 characters or less.")
+                return
             }
+        } else {
+            showAlert(message: "You must put something!")
         }
     }
     

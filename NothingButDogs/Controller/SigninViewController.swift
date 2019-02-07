@@ -18,9 +18,9 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if auth.currentUser != nil {
-            self.performSegue(withIdentifier: "signinToHome", sender: nil)
-        }
+//        if auth.currentUser != nil {
+//            self.performSegue(withIdentifier: "signinToHome", sender: nil)
+//        }
         
         signinButton.layer.cornerRadius = 20.0
         
@@ -33,17 +33,27 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
         
         SVProgressHUD.show()
         
-        auth.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-            
-            if error != nil {
-                print(error!)
-            } else {
-                print("Login Successful!")
-                SVProgressHUD.dismiss()
-                self.performSegue(withIdentifier: "signinToHome", sender: nil)
+        if emailTextField.text != "" && passwordTextField.text != "" {
+           
+            auth.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+                
+                if error != nil {
+                    print(error!)
+                } else {
+                    print("Login Successful!")
+                    SVProgressHUD.dismiss()
+                    self.performSegue(withIdentifier: "signinToHome", sender: nil)
+                }
             }
-
+        } else {
+            //2つのどれかがnilだったとき
+            print("どっちかnil")
+            SVProgressHUD.dismiss()
+            self.showAlert(message: "You need to fill everything!")
+            return
         }
+        
+        
         
     }
     

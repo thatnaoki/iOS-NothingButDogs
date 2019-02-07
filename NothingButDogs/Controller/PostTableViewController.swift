@@ -124,7 +124,7 @@ extension PostTableViewController {
         // 画像を取得して挿入
         if let postImageURL = URL(string: post.postImageURL) {
             
-            cell.postImage.af_setImage(withURL: postImageURL)
+            cell.postImage.af_setImage(withURL: postImageURL, placeholderImage: UIImage(named: "placeholder.png"))
             // Data(contentsOf)は同期処理なので非同期にする
 //            DispatchQueue.global().async {
 //                do {
