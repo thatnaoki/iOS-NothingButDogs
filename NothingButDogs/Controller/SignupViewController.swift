@@ -52,7 +52,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                                 ])
                         }
                         SVProgressHUD.dismiss()
-                        self.performSegue(withIdentifier: "signupToHome", sender: self)
+                        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                            appDelegate.showTimelineStoryboard()
+                        }
                     }
                 }
             } else {

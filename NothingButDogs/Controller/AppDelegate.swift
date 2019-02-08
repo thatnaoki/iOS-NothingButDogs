@@ -42,6 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
 
+    func showTimelineStoryboard() {
+        let vc = UIStoryboard(name: "AfterLogin", bundle: nil).instantiateInitialViewController()
+        UIApplication.shared.keyWindow?.rootViewController = vc
+    }
 
 }
 

@@ -19,7 +19,9 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         if auth.currentUser != nil {
-            self.performSegue(withIdentifier: "signinToHome", sender: nil)
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showTimelineStoryboard()
+            }
         }
         
         signinButton.layer.cornerRadius = 20.0
@@ -59,9 +61,9 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func signupButtonPressed(_ sender: Any) {
-        
-        performSegue(withIdentifier: "signinToSignup", sender: nil)
-        
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.showTimelineStoryboard()
+        }
     }
     
     

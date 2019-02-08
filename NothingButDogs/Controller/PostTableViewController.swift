@@ -140,9 +140,6 @@ extension PostTableViewController {
             
         }
         
-        
-        
-        
         cell.userName.text = post.userName
         
         cell.createdAt.text = post.createdAt
