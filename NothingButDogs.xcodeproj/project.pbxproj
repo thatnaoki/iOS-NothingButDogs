@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		51FE5C3D1DD9F806A49CB530 /* Pods_NothingButDogs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D92B22BEBCA3E57809EC913 /* Pods_NothingButDogs.framework */; };
+		B01E545A220D640900B3B8F0 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01E5459220D640900B3B8F0 /* TabbarViewController.swift */; };
 		B02FD00B2209EE1E002C79BB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02FD00A2209EE1E002C79BB /* ProfileViewController.swift */; };
 		B02FD00D220A8BF9002C79BB /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02FD00C220A8BF9002C79BB /* Firebase.swift */; };
 		B02FD00F220A95BD002C79BB /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02FD00E220A95BD002C79BB /* Extension.swift */; };
-		B0CA1F74220BE74B00842390 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CA1F73220BE74B00842390 /* TabBarViewController.swift */; };
 		B0F191F322028C2200894726 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F191F222028C2200894726 /* AppDelegate.swift */; };
 		B0F191F522028C2200894726 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F191F422028C2200894726 /* SigninViewController.swift */; };
 		B0F191F822028C2200894726 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0F191F622028C2200894726 /* Main.storyboard */; };
@@ -32,10 +32,10 @@
 /* Begin PBXFileReference section */
 		0D92B22BEBCA3E57809EC913 /* Pods_NothingButDogs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NothingButDogs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9098A2228D552239337A5AD /* Pods-NothingButDogs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NothingButDogs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NothingButDogs/Pods-NothingButDogs.debug.xcconfig"; sourceTree = "<group>"; };
+		B01E5459220D640900B3B8F0 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		B02FD00A2209EE1E002C79BB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B02FD00C220A8BF9002C79BB /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		B02FD00E220A95BD002C79BB /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		B0CA1F73220BE74B00842390 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		B0F191EF22028C2200894726 /* NothingButDogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NothingButDogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0F191F222028C2200894726 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0F191F422028C2200894726 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 				B0F1921A2202A7DF00894726 /* CreatePostViewController.swift */,
 				B02FD00A2209EE1E002C79BB /* ProfileViewController.swift */,
 				B02FD00E220A95BD002C79BB /* Extension.swift */,
-				B0CA1F73220BE74B00842390 /* TabBarViewController.swift */,
+				B01E5459220D640900B3B8F0 /* TabbarViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -306,9 +306,9 @@
 			files = (
 				B0F19215220295F100894726 /* SignupViewController.swift in Sources */,
 				B0F1920A22028D4200894726 /* User.swift in Sources */,
+				B01E545A220D640900B3B8F0 /* TabbarViewController.swift in Sources */,
 				B0F1920822028D3600894726 /* Post.swift in Sources */,
 				B0F1920E22028D9900894726 /* PostTableViewCell.swift in Sources */,
-				B0CA1F74220BE74B00842390 /* TabBarViewController.swift in Sources */,
 				B0F191F522028C2200894726 /* SigninViewController.swift in Sources */,
 				B0F1921D2202D1AE00894726 /* Inceptionv3.mlmodel in Sources */,
 				B02FD00D220A8BF9002C79BB /* Firebase.swift in Sources */,

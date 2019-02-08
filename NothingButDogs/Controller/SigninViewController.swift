@@ -18,9 +18,9 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if auth.currentUser != nil {
-//            self.performSegue(withIdentifier: "signinToHome", sender: nil)
-//        }
+        if auth.currentUser != nil {
+            self.performSegue(withIdentifier: "signinToHome", sender: nil)
+        }
         
         signinButton.layer.cornerRadius = 20.0
         

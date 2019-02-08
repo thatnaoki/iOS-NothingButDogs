@@ -16,9 +16,10 @@ class PostTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //バックボタン隠す
-        navigationItem.backBarButtonItem = nil
-        navigationItem.hidesBackButton = true
+        self.navigationItem.backBarButtonItem = nil
+        self.navigationItem.hidesBackButton = true
         
         //プルリフレッシュ
         self.refreshControl = UIRefreshControl()

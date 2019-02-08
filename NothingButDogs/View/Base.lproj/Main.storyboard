@@ -134,13 +134,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <segue destination="88V-Fu-iGA" kind="show" identifier="homeToChooseImage" id="C57-Yj-sLw"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6to-xl-SbL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4596" y="-354"/>
+            <point key="canvasLocation" x="4596" y="-631"/>
         </scene>
         <!--Choose an Image-->
         <scene sceneID="JUq-ef-BHs">
@@ -163,6 +160,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eeo-ZR-7FC"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="fDu-76-P7k"/>
                     <navigationItem key="navigationItem" title="Choose an Image" id="paq-UD-X50">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="tWh-vq-tGI">
                             <connections>
@@ -178,7 +176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0n9-gx-Ohr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5807" y="-354"/>
+            <point key="canvasLocation" x="5802" y="134"/>
         </scene>
         <!--Create Post View Controller-->
         <scene sceneID="UsP-LC-qHn">
@@ -212,7 +210,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEJ-er-Tuu">
-                                <rect key="frame" x="112.5" y="493" width="150" height="40"/>
+                                <rect key="frame" x="112.5" y="542" width="150" height="40"/>
                                 <color key="backgroundColor" red="0.018645260479999998" green="0.4776622653" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="4Cz-VQ-Qcu"/>
@@ -250,7 +248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wIQ-fV-ERh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6956" y="-354"/>
+            <point key="canvasLocation" x="6852" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iaH-o7-txB">
@@ -434,23 +432,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lco-cv-hdI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4596" y="647"/>
+            <point key="canvasLocation" x="4596" y="699"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Equ-z5-eGj">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CII-LS-RWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="wUv-D4-8Bi" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="H63-N3-2Iq">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="Dj8-Xg-Dhn" kind="relationship" relationship="viewControllers" id="dM3-Dc-3gI"/>
                         <segue destination="fY1-la-27I" kind="relationship" relationship="viewControllers" id="MU0-Ep-9qH"/>
+                        <segue destination="88V-Fu-iGA" kind="relationship" relationship="viewControllers" id="BHg-FB-7DV"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CII-LS-RWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3645.5999999999999" y="133.5832083958021"/>
         </scene>
@@ -460,6 +460,6 @@
         <image name="profile" width="14.399999618530273" height="14.399999618530273"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JWP-ct-eiT"/>
+        <segue reference="HTv-i7-6OA"/>
     </inferredMetricsTieBreakers>
 </document>

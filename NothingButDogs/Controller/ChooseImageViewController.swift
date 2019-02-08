@@ -20,6 +20,9 @@ class ChooseImageViewController: UIViewController, UINavigationControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.backBarButtonItem = nil
+        self.navigationItem.hidesBackButton = true
+        
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         
@@ -27,6 +30,10 @@ class ChooseImageViewController: UIViewController, UINavigationControllerDelegat
         
         //カメラかライブラリかを選択させるAlertController
         //カメラから
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
         let alertController = UIAlertController(title: "", message: "Camera or Library", preferredStyle: .actionSheet)
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
