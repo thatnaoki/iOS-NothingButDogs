@@ -8,10 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		51FE5C3D1DD9F806A49CB530 /* Pods_NothingButDogs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D92B22BEBCA3E57809EC913 /* Pods_NothingButDogs.framework */; };
+		B01E545A220D640900B3B8F0 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01E5459220D640900B3B8F0 /* TabbarViewController.swift */; };
+		B01E545C220D731900B3B8F0 /* AfterLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B01E545B220D731900B3B8F0 /* AfterLogin.storyboard */; };
 		B02FD00B2209EE1E002C79BB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02FD00A2209EE1E002C79BB /* ProfileViewController.swift */; };
+		B02FD00D220A8BF9002C79BB /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02FD00C220A8BF9002C79BB /* Firebase.swift */; };
+		B02FD00F220A95BD002C79BB /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02FD00E220A95BD002C79BB /* Extension.swift */; };
 		B0F191F322028C2200894726 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F191F222028C2200894726 /* AppDelegate.swift */; };
 		B0F191F522028C2200894726 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F191F422028C2200894726 /* SigninViewController.swift */; };
-		B0F191F822028C2200894726 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0F191F622028C2200894726 /* Main.storyboard */; };
+		B0F191F822028C2200894726 /* BeforeLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0F191F622028C2200894726 /* BeforeLogin.storyboard */; };
 		B0F191FD22028C2400894726 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0F191FB22028C2400894726 /* LaunchScreen.storyboard */; };
 		B0F1920822028D3600894726 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1920722028D3600894726 /* Post.swift */; };
 		B0F1920A22028D4200894726 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1920922028D4200894726 /* User.swift */; };
@@ -29,11 +33,15 @@
 /* Begin PBXFileReference section */
 		0D92B22BEBCA3E57809EC913 /* Pods_NothingButDogs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NothingButDogs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9098A2228D552239337A5AD /* Pods-NothingButDogs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NothingButDogs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NothingButDogs/Pods-NothingButDogs.debug.xcconfig"; sourceTree = "<group>"; };
+		B01E5459220D640900B3B8F0 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		B01E545B220D731900B3B8F0 /* AfterLogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AfterLogin.storyboard; sourceTree = "<group>"; };
 		B02FD00A2209EE1E002C79BB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B02FD00C220A8BF9002C79BB /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		B02FD00E220A95BD002C79BB /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		B0F191EF22028C2200894726 /* NothingButDogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NothingButDogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0F191F222028C2200894726 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0F191F422028C2200894726 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
-		B0F191F722028C2200894726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B0F191F722028C2200894726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BeforeLogin.storyboard; sourceTree = "<group>"; };
 		B0F191FC22028C2400894726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0F191FE22028C2400894726 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0F1920722028D3600894726 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -113,6 +121,8 @@
 				B0F192182202A08500894726 /* ChooseImageViewController.swift */,
 				B0F1921A2202A7DF00894726 /* CreatePostViewController.swift */,
 				B02FD00A2209EE1E002C79BB /* ProfileViewController.swift */,
+				B02FD00E220A95BD002C79BB /* Extension.swift */,
+				B01E5459220D640900B3B8F0 /* TabbarViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -121,8 +131,9 @@
 			isa = PBXGroup;
 			children = (
 				B0F1920B22028D6F00894726 /* Cell */,
-				B0F191F622028C2200894726 /* Main.storyboard */,
+				B0F191F622028C2200894726 /* BeforeLogin.storyboard */,
 				B0F191FB22028C2400894726 /* LaunchScreen.storyboard */,
+				B01E545B220D731900B3B8F0 /* AfterLogin.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -132,6 +143,7 @@
 			children = (
 				B0F1920722028D3600894726 /* Post.swift */,
 				B0F1920922028D4200894726 /* User.swift */,
+				B02FD00C220A8BF9002C79BB /* Firebase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,9 +226,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0F191FD22028C2400894726 /* LaunchScreen.storyboard in Resources */,
+				B01E545C220D731900B3B8F0 /* AfterLogin.storyboard in Resources */,
 				B0F5ABDE2209C88C00C03031 /* Images.xcassets in Resources */,
 				B0F1921322028F9700894726 /* GoogleService-Info.plist in Resources */,
-				B0F191F822028C2200894726 /* Main.storyboard in Resources */,
+				B0F191F822028C2200894726 /* BeforeLogin.storyboard in Resources */,
 				B0F1920F22028D9900894726 /* PostTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,7 +267,9 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-NothingButDogs/Pods-NothingButDogs-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-NothingButDogs/Pods-NothingButDogs-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -269,6 +284,8 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -281,7 +298,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NothingButDogs/Pods-NothingButDogs-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NothingButDogs/Pods-NothingButDogs-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -293,12 +310,15 @@
 			files = (
 				B0F19215220295F100894726 /* SignupViewController.swift in Sources */,
 				B0F1920A22028D4200894726 /* User.swift in Sources */,
+				B01E545A220D640900B3B8F0 /* TabbarViewController.swift in Sources */,
 				B0F1920822028D3600894726 /* Post.swift in Sources */,
 				B0F1920E22028D9900894726 /* PostTableViewCell.swift in Sources */,
 				B0F191F522028C2200894726 /* SigninViewController.swift in Sources */,
 				B0F1921D2202D1AE00894726 /* Inceptionv3.mlmodel in Sources */,
+				B02FD00D220A8BF9002C79BB /* Firebase.swift in Sources */,
 				B02FD00B2209EE1E002C79BB /* ProfileViewController.swift in Sources */,
 				B0F192192202A08500894726 /* ChooseImageViewController.swift in Sources */,
+				B02FD00F220A95BD002C79BB /* Extension.swift in Sources */,
 				B0F1921B2202A7DF00894726 /* CreatePostViewController.swift in Sources */,
 				B0F19217220299A900894726 /* PostTableViewController.swift in Sources */,
 				B0F191F322028C2200894726 /* AppDelegate.swift in Sources */,
@@ -308,12 +328,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B0F191F622028C2200894726 /* Main.storyboard */ = {
+		B0F191F622028C2200894726 /* BeforeLogin.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B0F191F722028C2200894726 /* Base */,
 			);
-			name = Main.storyboard;
+			name = BeforeLogin.storyboard;
 			sourceTree = "<group>";
 		};
 		B0F191FB22028C2400894726 /* LaunchScreen.storyboard */ = {

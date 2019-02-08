@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class CreatePostViewController: UIViewController, UITextFieldDelegate {
 
@@ -16,11 +17,9 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var postTextField: UITextField!
     @IBOutlet weak var shareButton: UIButton!
     
-    let db = Firestore.firestore()
-    let storage = Storage.storage()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("is this PostTableViewController? -> \(String(describing: self.presentingViewController?.presentingViewController))")
 
         shareButton.layer.cornerRadius = 20.0
         
@@ -59,41 +58,51 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func shareButtonPressed(_ sender: Any) {
+    
+    @IBAction func shareButtonPressed(_ sender: UIButton) {
         
+        SVProgressHUD.show()
+        let group = DispatchGroup()
         setDataToStorage(postImage.image!) {urlString, _ in
+            group.enter()
             //データベースへの保存
+            //Dateの用意
             let f = DateFormatter()
             f.dateStyle = .medium
             f.timeStyle = .medium
             let now = Date()
             //ログイン中のユーザー取得
-            let user = Auth.auth().currentUser
+            let user = auth.currentUser
             
             if let user = user {
                 
-                self.db.collection("posts").document().setData([
+                db.collection("posts").document().setData([
                     "userId" : user.uid,
                     "postImageURL" : urlString!,
                     "postText" : self.postTextField.text!,
                     "numberOfLike" : 0,
-                    "createdAt" : f.string(from: now)
+                    "createdAt" : f.string(from: now),
+                    "timestamp": FieldValue.serverTimestamp()
                     ])
+            
             }
+            
+            group.leave()
+        
         }
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
-    }
-    
-}
+        group.notify(queue: .main) {
+        
+            SVProgressHUD.dismiss()
+            self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+            
+        }
 
+    }
+
+}
 
 //MARK: キーボード閉じる系
 extension CreatePostViewController {
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         

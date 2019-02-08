@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import Firebase
 
 class ProfileViewController: UIViewController, UITextFieldDelegate {
 
-    let docRef = Firestore.firestore().collection("users").document((Auth.auth().currentUser?.uid)!)
+    let docRef = db.collection("users").document((auth.currentUser?.uid)!)
     
     @IBOutlet weak var updateButton: UIButton!
     
@@ -22,7 +21,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
 
         updateButton.layer.cornerRadius = 20.0
         userNameTextField.delegate = self
-        
         
         docRef.getDocument() { (document, error) in
             
@@ -41,24 +39,31 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func updateButtonPressed(_ sender: UIButton) {
         
-        if let newUserName = userNameTextField.text {
+        if userNameTextField.text != "" {
             
-            docRef.updateData([
-                "userName" : newUserName
-            ]) { err in
-                if let err = err {
-                    print("Error updating document: \(err)")
-                } else {
-                    print("Document successfully updated")
+            if userNameTextField.text!.count <= 10 {
+                
+                docRef.updateData([
+                    "userName" : userNameTextField.text!
+                ]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Document successfully updated")
+                        self.showAlert(message: "Successfully updated!")
+                    }
                 }
+                
+            } else {
+                showAlert(message: "Names should be in 10 characters or less.")
+                return
             }
+        } else {
+            showAlert(message: "You must put something!")
         }
     }
     
     //MARK: キーボード閉じる用
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         

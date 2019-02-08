@@ -7,114 +7,72 @@
 //
 
 import UIKit
-import Firebase
 import SVProgressHUD
+import AlamofireImage
 
 class PostTableViewController: UITableViewController {
-    
-    let db = Firestore.firestore()
     
     var postArray: [Post] = [Post]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //バックボタン隠す
-        navigationItem.backBarButtonItem = nil
-        navigationItem.hidesBackButton = true
         
-        //MARK: プルリフレッシュ
+        //バックボタン隠す
+        self.navigationItem.backBarButtonItem = nil
+        self.navigationItem.hidesBackButton = true
+        
+        //プルリフレッシュ
         self.refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         self.tableView.addSubview(self.refreshControl!)
         
-        SVProgressHUD.show()
+        //tableView初期化して、data取得
         configureTableview()
         setDataToArray()
-//        setDataToArray() {postArray in
-//
-//            print("リロードのタイミング")
-//            print(postArray)
-//            self.tableView.reloadData()
-//            SVProgressHUD.dismiss()
-//
-//        }
-        
     }
     
     @objc func pullToRefresh() {
         
-//        setDataToArray() {postArray in
-//
-//            print("リロードのタイミング")
-//            print(postArray)
-//            self.tableView.reloadData()
-//            SVProgressHUD.dismiss()
-//
-//        }
         setDataToArray()
         refreshControl?.endRefreshing()
         
     }
     
-//    func setDataToArray(completion: @escaping ([Post]) -> Void) {
-//
-//        postArray.removeAll()
-//        print("removeAllのタイミング")
-//
-//        retrieveData() { post in
-//            print("postArrayへのappendのタイミング")
-//            self.postArray.append(post)
-//        }
-//
-//        completion(self.postArray)
-//
-//    }
-    
     //MARK: データが揃ってから、グローバルのarrayにセットしてreloadする
     func setDataToArray() {
-
+        
+        SVProgressHUD.show()
         postArray.removeAll()
-        print("removeAllのタイミング")
-
-        let group = DispatchGroup()
-        retrieveData() { post in
-            group.enter()
-//            print(post)
-            print("postArrayへのappendのタイミング")
-            self.postArray.append(post)
-            group.leave()
-        }
-
-
-        group.notify(queue: .main) {
-
-            print("リロードのタイミング")
+        
+        retrieveData() { posts in
+            self.postArray = posts
             print(self.postArray)
             self.tableView.reloadData()
             SVProgressHUD.dismiss()
-
         }
-
 
     }
     
-    
     //MARK: データベースからポストを取得する
-    func retrieveData(completion: @escaping (Post) -> Void) {
-        
-        let postsColRef = db.collection("posts").order(by: "createdAt")
+    //配列化する、理想は返す件数を指定できる仕様
+    func retrieveData(completion: @escaping ([Post]) -> Void) {
+    
+        var posts: [Post] = []
+        let postsColRef = db.collection("posts").order(by: "timestamp", descending: true).limit(to: 5)
+        let group = DispatchGroup()
         
         postsColRef.getDocuments() { (querySnapshot, error) in
             if let error = error {
                 print("Document data: \(error)")
             } else {
                 for document in querySnapshot!.documents {
+                    group.enter()
                     let data = document.data()
                     let userId = data["userId"] as? String
                     let postImage = data["postImageURL"] as? String
                     let createdAt = data["createdAt"] as? String
                     //投稿に紐づくユーザーデータを取得して合わせてpostArrayに挿入
-                    let docRef = self.db.collection("users").document(userId!)
+                    let docRef = db.collection("users").document(userId!)
                     
                     docRef.getDocument() { (document, error) in
                         if let document = document, document.exists {
@@ -127,13 +85,16 @@ class PostTableViewController: UITableViewController {
                                 userName: userName!,
                                 postImageURL: postImage!,
                                 createdAt: createdAt!
-                                )
-                            
-//                            print(post)
-                            completion(post)
-                            
+                            )
+                            posts.append(post)
+                            group.leave()
                         }
                     }
+                }
+                //配列化してクロージャに渡す
+                group.notify(queue: .main) {
+                    print(posts)
+                    completion(posts)
                 }
             }
         }
@@ -162,14 +123,23 @@ extension PostTableViewController {
         
         let post = postArray[indexPath.row]
         // 画像を取得して挿入
-        let postImageURL = URL(string: post.postImageURL)
-        
-        do {
-            let data = try Data(contentsOf: postImageURL!)
-            cell.postImage.image = UIImage(data: data)
-        }catch let err {
-            print("Error : \(err.localizedDescription)")
+        if let postImageURL = URL(string: post.postImageURL) {
+            
+            cell.postImage.af_setImage(withURL: postImageURL, placeholderImage: UIImage(named: "placeholder.png"))
+            // Data(contentsOf)は同期処理なので非同期にする
+//            DispatchQueue.global().async {
+//                do {
+//                    let data = try Data(contentsOf: postImageURL)
+//                    DispatchQueue.main.async {
+//                        cell.postImage.image = UIImage(data: data)
+//                    }
+//                } catch let err {
+//                    print("Error : \(err.localizedDescription)")
+//                }
+//            }
+            
         }
+        
         cell.userName.text = post.userName
         
         cell.createdAt.text = post.createdAt

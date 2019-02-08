@@ -11,8 +11,6 @@ import SVProgressHUD
 import Firebase
 
 class SignupViewController: UIViewController, UITextFieldDelegate {
-
-    let db = Firestore.firestore()
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -33,37 +31,48 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     @IBAction func signupButtonPressed(_ sender: Any) {
         
         SVProgressHUD.show()
-        
-        //TODO: Set up a new user on our Firbase database
-        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-            if error != nil {
-                print(error!)
-            } else {
-                print("Signup Successful!")
-                //userdefaultにuser情報保存
-//                let userDefault = UserDefaults.standard
-//                userDefault.register(defaults: ["id" : self.emailTextField.text!])
-//                userDefault.register(defaults: ["password" : self.passwordTextField.text!])
+        //unwrap
+        if emailTextField.text != "" && passwordTextField.text != "" && usernameTextField.text != ""{
+            //usernameの文字数確認
+            if usernameTextField.text!.count <= 10 {
                 
-                //Firebaseでuser document作成
-                let user = Auth.auth().currentUser
-                
-                if let user = user {
-                    self.db.collection("users").document(user.uid).setData([
-                        "userName" : self.usernameTextField.text!
-                    ])
+                Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+                    if error != nil {
+                        print(error!)
+                        self.showAlert(message: "Failed to save!")
+                    } else {
+                        print("Signup Successful!")
+                        
+                        //Firebaseでuser document作成
+                        let user = Auth.auth().currentUser
+                        
+                        if let user = user {
+                            db.collection("users").document(user.uid).setData([
+                                "userName" : self.usernameTextField.text!
+                                ])
+                        }
+                        SVProgressHUD.dismiss()
+                        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                            appDelegate.showTimelineStoryboard()
+                        }
+                    }
                 }
-                SVProgressHUD.dismiss()
-                self.performSegue(withIdentifier: "signupToHome", sender: self)
+            } else {
+                //名前が11文字以上の場合
+                self.showAlert(message: "Names should be in 10 characters or less.")
             }
+        } else {
+            //3つのどれかがnilだったとき
+            SVProgressHUD.dismiss()
+            self.showAlert(message: "You need to fill everything!")
+            return
         }
+        
+        
+        
     }
     
-    //MARK: キーボード閉じる用
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
+    //MARK: キーボード閉じる用    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         usernameTextField.resignFirstResponder()

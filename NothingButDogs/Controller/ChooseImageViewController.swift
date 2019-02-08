@@ -19,9 +19,11 @@ class ChooseImageViewController: UIViewController, UINavigationControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
+        
+        self.nextButton.tintColor = UIColor.clear
         
         //カメラかライブラリかを選択させるAlertController
         //カメラから
@@ -55,11 +57,7 @@ class ChooseImageViewController: UIViewController, UINavigationControllerDelegat
             
         }
         //キャンセル用意
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {(action: UIAlertAction) in
-            
-            self.nextButton.tintColor = UIColor.clear
-            
-        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addAction(cancelAction)
         
@@ -88,10 +86,10 @@ class ChooseImageViewController: UIViewController, UINavigationControllerDelegat
             for i in 0...20 {
                 if results[i].identifier.contains("terrier") {
                     self.navigationItem.title = "It's a Dog!"
+                    self.nextButton.tintColor = UIColor.blue
                     break
                 } else {
                     self.navigationItem.title = "Not a Dog!"
-                    self.nextButton.tintColor = UIColor.clear
                 }
             }
         }
@@ -111,7 +109,6 @@ class ChooseImageViewController: UIViewController, UINavigationControllerDelegat
         performSegue(withIdentifier: "goToCreatePost", sender: nil)
         
     }
-    
 
 }
 
