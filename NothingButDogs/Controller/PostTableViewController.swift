@@ -12,6 +12,8 @@ import AlamofireImage
 
 class PostTableViewController: UITableViewController {
     
+    var fetchCount : Int = 0
+    
     var postArray: [Post] = [Post]()
 
     override func viewDidLoad() {
@@ -42,10 +44,9 @@ class PostTableViewController: UITableViewController {
     func setDataToArray() {
         
         SVProgressHUD.show()
-        postArray.removeAll()
         
-        retrieveData() { posts in
-            self.postArray = posts
+        fetchData() { posts in
+            self.postArray = self.postArray + posts
             print(self.postArray)
             self.tableView.reloadData()
             SVProgressHUD.dismiss()
@@ -55,58 +56,119 @@ class PostTableViewController: UITableViewController {
     
     //MARK: データベースからポストを取得する
     //配列化する、理想は返す件数を指定できる仕様
-    func retrieveData(completion: @escaping ([Post]) -> Void) {
+    func fetchData(completion: @escaping ([Post]) -> Void) {
     
         var posts: [Post] = []
-        let postsColRef = db.collection("posts").order(by: "timestamp", descending: true).limit(to: 5)
-        let group = DispatchGroup()
         
-        postsColRef.getDocuments() { (querySnapshot, error) in
-            if let error = error {
-                print("Document data: \(error)")
-            } else {
-                for document in querySnapshot!.documents {
-                    group.enter()
-                    let data = document.data()
-                    let userId = data["userId"] as? String
-                    let postImage = data["postImageURL"] as? String
-                    let createdAt = data["createdAt"] as? String
-                    //投稿に紐づくユーザーデータを取得して合わせてpostArrayに挿入
-                    let docRef = db.collection("users").document(userId!)
-                    
-                    docRef.getDocument() { (document, error) in
-                        if let document = document, document.exists {
-                            
-                            let data = document.data()!
-                            let userName = data["userName"] as? String
-                            
-                            let post = Post(
-                                userId: userId!,
-                                userName: userName!,
-                                postImageURL: postImage!,
-                                createdAt: createdAt!
-                            )
-                            posts.append(post)
-                            group.leave()
+        if self.fetchCount == 0{
+            
+            let postsColRef = db.collection("posts").order(by: "timestamp", descending: true).limit(to: 2)
+            
+            let group = DispatchGroup()
+            
+            postsColRef.getDocuments() { (querySnapshot, error) in
+                if let error = error {
+                    print("Document data: \(error)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        group.enter()
+                        let data = document.data()
+                        let userId = data["userId"] as? String
+                        let postImage = data["postImageURL"] as? String
+                        let createdAt = data["createdAt"] as? String
+                        //投稿に紐づくユーザーデータを取得して合わせてpostArrayに挿入
+                        let docRef = db.collection("users").document(userId!)
+                        
+                        docRef.getDocument() { (document, error) in
+                            if let document = document, document.exists {
+                                
+                                let data = document.data()!
+                                let userName = data["userName"] as? String
+                                
+                                let post = Post(
+                                    userId: userId!,
+                                    userName: userName!,
+                                    postImageURL: postImage!,
+                                    createdAt: createdAt!
+                                )
+                                posts.append(post)
+                                group.leave()
+                            }
                         }
                     }
+                    //配列化してクロージャに渡す
+                    group.notify(queue: .main) {
+                        print(posts)
+                        self.fetchCount += 1
+                        completion(posts)
+                    }
                 }
-                //配列化してクロージャに渡す
-                group.notify(queue: .main) {
-                    print(posts)
-                    completion(posts)
+            }
+        } else if self.fetchCount > 0 {
+
+            let first = db.collection("posts").order(by: "timestamp", descending: true).limit(to: 2 * self.fetchCount)
+            
+            first.addSnapshotListener { (snapshot, error) in
+                guard let snapshot = snapshot else {
+                    print("Error: \(error.debugDescription)")
+                    return
+                }
+                guard let lastSnapshot = snapshot.documents.last else {
+                    return
+                }
+                let postsColRef = db.collection("posts").order(by: "timestamp", descending: true).start(afterDocument: lastSnapshot).limit(to: 2)
+                
+                let group = DispatchGroup()
+                
+                postsColRef.getDocuments() { (querySnapshot, error) in
+                    if let error = error {
+                        print("Document data: \(error)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            group.enter()
+                            let data = document.data()
+                            let userId = data["userId"] as? String
+                            let postImage = data["postImageURL"] as? String
+                            let createdAt = data["createdAt"] as? String
+                            //投稿に紐づくユーザーデータを取得して合わせてpostArrayに挿入
+                            let docRef = db.collection("users").document(userId!)
+                            
+                            docRef.getDocument() { (document, error) in
+                                if let document = document, document.exists {
+                                    
+                                    let data = document.data()!
+                                    let userName = data["userName"] as? String
+                                    
+                                    let post = Post(
+                                        userId: userId!,
+                                        userName: userName!,
+                                        postImageURL: postImage!,
+                                        createdAt: createdAt!
+                                    )
+                                    posts.append(post)
+                                    group.leave()
+                                }
+                            }
+                        }
+                        //配列化してクロージャに渡す
+                        group.notify(queue: .main) {
+//                            print(posts)
+                            self.fetchCount += 1
+                            completion(posts)
+                        }
+                    }
                 }
             }
         }
     }
-    
-    @IBAction func cameraButtonPressed(_ sender: UIBarButtonItem) {
-        
-        performSegue(withIdentifier: "homeToChooseImage", sender: nil)
-        
-    }
 
+    @IBAction func cameraButtonPressed(_ sender: UIBarButtonItem) {
+            
+        performSegue(withIdentifier: "homeToChooseImage", sender: nil)
+            
+    }
 }
+
 
 // MARK: - Table view data source
 extension PostTableViewController {
@@ -114,7 +176,7 @@ extension PostTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return postArray.count
-    
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -127,16 +189,16 @@ extension PostTableViewController {
             
             cell.postImage.af_setImage(withURL: postImageURL, placeholderImage: UIImage(named: "placeholder.png"))
             // Data(contentsOf)は同期処理なので非同期にする
-//            DispatchQueue.global().async {
-//                do {
-//                    let data = try Data(contentsOf: postImageURL)
-//                    DispatchQueue.main.async {
-//                        cell.postImage.image = UIImage(data: data)
-//                    }
-//                } catch let err {
-//                    print("Error : \(err.localizedDescription)")
-//                }
-//            }
+            //            DispatchQueue.global().async {
+            //                do {
+            //                    let data = try Data(contentsOf: postImageURL)
+            //                    DispatchQueue.main.async {
+            //                        cell.postImage.image = UIImage(data: data)
+            //                    }
+            //                } catch let err {
+            //                    print("Error : \(err.localizedDescription)")
+            //                }
+            //            }
             
         }
         
@@ -146,9 +208,8 @@ extension PostTableViewController {
         
         return cell
     }
-
+    
 }
-
 
 // MARK: - Table viewのlayout設定
 extension PostTableViewController {
@@ -158,5 +219,23 @@ extension PostTableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 500
     }
+    
+}
+
+extension PostTableViewController {
+    
+//    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    
+//        let currentOffsetY = scrollView.contentOffset.y
+//        let maximumOffset = scrollView.contentSize.height - scrollView.frame.height
+//        let distanceToBottom = maximumOffset - currentOffsetY
+//        print("currentOffsetY: \(currentOffsetY)")
+//        print("maximumOffset: \(maximumOffset)")
+//        print("distanceToBottom: \(distanceToBottom)")
+//        if distanceToBottom < 0 {
+//            setDataToArray()
+//        }
+//
+//    }
     
 }

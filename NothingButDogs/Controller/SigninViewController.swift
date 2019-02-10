@@ -55,15 +55,11 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        
-        
     }
     
-    
+    //画面遷移
     @IBAction func signupButtonPressed(_ sender: Any) {
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            appDelegate.showTimelineStoryboard()
-        }
+        performSegue(withIdentifier: "signinToSignup", sender: nil)
     }
     
     
