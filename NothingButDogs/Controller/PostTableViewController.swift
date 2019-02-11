@@ -12,9 +12,11 @@ import AlamofireImage
 
 class PostTableViewController: UITableViewController {
     
-    var fetchCount : Int = 0
+    private var loadStatus: Bool = true
     
-    var postArray: [Post] = [Post]()
+    private var fetchCount : Int = 0
+    
+    private var postArray: [Post] = [Post]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,24 +26,32 @@ class PostTableViewController: UITableViewController {
         self.navigationItem.hidesBackButton = true
         
         //プルリフレッシュ
-        self.refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
-        self.tableView.addSubview(self.refreshControl!)
+//        self.refreshControl = UIRefreshControl()
+//        refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+//        self.tableView.addSubview(self.refreshControl!)
         
         //tableView初期化して、data取得
         configureTableview()
-        setDataToArray()
+//        updateView()
     }
     
-    @objc func pullToRefresh() {
-        
-        setDataToArray()
-        refreshControl?.endRefreshing()
-        
+    override func viewDidAppear(_ animated: Bool) {
+        postArray.removeAll()
+        updateView()
     }
+    
+//    @objc func pullToRefresh() {
+//
+//        postArray.removeAll()
+//        fetchCount = 0
+//        DispatchQueue.main.async {
+//            self.updateView()
+//        }
+//        self.refreshControl?.endRefreshing()
+//    }
     
     //MARK: データが揃ってから、グローバルのarrayにセットしてreloadする
-    func setDataToArray() {
+    func updateView() {
         
         SVProgressHUD.show()
         
@@ -49,6 +59,7 @@ class PostTableViewController: UITableViewController {
             self.postArray = self.postArray + posts
             print(self.postArray)
             self.tableView.reloadData()
+            self.loadStatus = false
             SVProgressHUD.dismiss()
         }
 
@@ -57,7 +68,7 @@ class PostTableViewController: UITableViewController {
     //MARK: データベースからポストを取得する
     //配列化する、理想は返す件数を指定できる仕様
     func fetchData(completion: @escaping ([Post]) -> Void) {
-    
+        
         var posts: [Post] = []
         
         if self.fetchCount == 0{
@@ -181,6 +192,8 @@ extension PostTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        print(postArray)
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
         
         let post = postArray[indexPath.row]
@@ -223,19 +236,23 @@ extension PostTableViewController {
 }
 
 extension PostTableViewController {
-    
-//    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    
-//        let currentOffsetY = scrollView.contentOffset.y
-//        let maximumOffset = scrollView.contentSize.height - scrollView.frame.height
-//        let distanceToBottom = maximumOffset - currentOffsetY
-//        print("currentOffsetY: \(currentOffsetY)")
-//        print("maximumOffset: \(maximumOffset)")
-//        print("distanceToBottom: \(distanceToBottom)")
-//        if distanceToBottom < 0 {
-//            setDataToArray()
-//        }
-//
-//    }
-    
+
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+        let currentOffsetY = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.height
+        let distanceToBottom = maximumOffset - currentOffsetY
+        if !self.loadStatus && distanceToBottom < -50 {
+            print(currentOffsetY)
+            print(maximumOffset)
+            print(distanceToBottom)
+            print("distanceToBottom=0の状態")
+            self.loadStatus = true
+            updateView()
+        } else {
+            return
+        }
+
+    }
+
 }
