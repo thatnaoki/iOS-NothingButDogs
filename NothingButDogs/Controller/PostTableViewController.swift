@@ -30,13 +30,13 @@ class PostTableViewController: UITableViewController {
 //        refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
 //        self.tableView.addSubview(self.refreshControl!)
         
-        //tableView初期化して、data取得
+        //tableView初期化
         configureTableview()
-//        updateView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         postArray.removeAll()
+        fetchCount = 0
         updateView()
     }
     
@@ -47,7 +47,10 @@ class PostTableViewController: UITableViewController {
 //        DispatchQueue.main.async {
 //            self.updateView()
 //        }
-//        self.refreshControl?.endRefreshing()
+//        DispatchQueue.main.async {
+//            self.refreshControl?.endRefreshing()
+//        }
+//
 //    }
     
     //MARK: データが揃ってから、グローバルのarrayにセットしてreloadする
@@ -57,7 +60,7 @@ class PostTableViewController: UITableViewController {
         
         fetchData() { posts in
             self.postArray = self.postArray + posts
-            print(self.postArray)
+            print("in updateView() -> \(self.postArray)")
             self.tableView.reloadData()
             self.loadStatus = false
             SVProgressHUD.dismiss()
@@ -73,7 +76,7 @@ class PostTableViewController: UITableViewController {
         
         if self.fetchCount == 0{
             
-            let postsColRef = db.collection("posts").order(by: "timestamp", descending: true).limit(to: 2)
+            let postsColRef = db.collection("posts").order(by: "timestamp", descending: true).limit(to: 5)
             
             let group = DispatchGroup()
             
@@ -109,7 +112,7 @@ class PostTableViewController: UITableViewController {
                     }
                     //配列化してクロージャに渡す
                     group.notify(queue: .main) {
-                        print(posts)
+                        print("infetchData()\(posts)")
                         self.fetchCount += 1
                         completion(posts)
                     }
@@ -117,7 +120,7 @@ class PostTableViewController: UITableViewController {
             }
         } else if self.fetchCount > 0 {
 
-            let first = db.collection("posts").order(by: "timestamp", descending: true).limit(to: 2 * self.fetchCount)
+            let first = db.collection("posts").order(by: "timestamp", descending: true).limit(to: 5 * self.fetchCount)
             
             first.addSnapshotListener { (snapshot, error) in
                 guard let snapshot = snapshot else {
@@ -192,7 +195,7 @@ extension PostTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        print(postArray)
+        print("called cellforRowat")
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
         
@@ -235,6 +238,7 @@ extension PostTableViewController {
     
 }
 
+// MARK: - 一番下までスクロールしたときに追加で読み込むやつ
 extension PostTableViewController {
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
