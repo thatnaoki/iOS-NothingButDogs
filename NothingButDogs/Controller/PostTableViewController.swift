@@ -42,14 +42,18 @@ class PostTableViewController: UITableViewController {
     
 //    @objc func pullToRefresh() {
 //
+//        print("removeAll()")
 //        postArray.removeAll()
 //        fetchCount = 0
 //        DispatchQueue.main.async {
+//            print("updateView()")
 //            self.updateView()
+//            DispatchQueue.main.async {
+//                print("endRefreshing()")
+//                self.refreshControl?.endRefreshing()
+//            }
 //        }
-//        DispatchQueue.main.async {
-//            self.refreshControl?.endRefreshing()
-//        }
+//
 //
 //    }
     
@@ -86,10 +90,12 @@ class PostTableViewController: UITableViewController {
                 } else {
                     for document in querySnapshot!.documents {
                         group.enter()
+                        let documentId = document.documentID
                         let data = document.data()
                         let userId = data["userId"] as? String
                         let postImage = data["postImageURL"] as? String
                         let createdAt = data["createdAt"] as? String
+                        let numberOfLike = data["numberOfLike"] as? Int
                         //投稿に紐づくユーザーデータを取得して合わせてpostArrayに挿入
                         let docRef = db.collection("users").document(userId!)
                         
@@ -103,7 +109,9 @@ class PostTableViewController: UITableViewController {
                                     userId: userId!,
                                     userName: userName!,
                                     postImageURL: postImage!,
-                                    createdAt: createdAt!
+                                    createdAt: createdAt!,
+                                    documentId: documentId,
+                                    numberOfLike: numberOfLike!
                                 )
                                 posts.append(post)
                                 group.leave()
@@ -140,10 +148,12 @@ class PostTableViewController: UITableViewController {
                     } else {
                         for document in querySnapshot!.documents {
                             group.enter()
+                            let documentId = document.documentID
                             let data = document.data()
                             let userId = data["userId"] as? String
                             let postImage = data["postImageURL"] as? String
                             let createdAt = data["createdAt"] as? String
+                            let numberOfLike = data["numberOfLike"] as? Int
                             //投稿に紐づくユーザーデータを取得して合わせてpostArrayに挿入
                             let docRef = db.collection("users").document(userId!)
                             
@@ -157,7 +167,9 @@ class PostTableViewController: UITableViewController {
                                         userId: userId!,
                                         userName: userName!,
                                         postImageURL: postImage!,
-                                        createdAt: createdAt!
+                                        createdAt: createdAt!,
+                                        documentId: documentId,
+                                        numberOfLike: numberOfLike!
                                     )
                                     posts.append(post)
                                     group.leave()
@@ -222,6 +234,10 @@ extension PostTableViewController {
         
         cell.createdAt.text = post.createdAt
         
+        cell.documentId = post.documentId
+        
+        cell.numberOfLikeLabel.text = "\(post.numberOfLike) Likes"
+        
         return cell
     }
     
@@ -238,7 +254,7 @@ extension PostTableViewController {
     
 }
 
-// MARK: - 一番下までスクロールしたときに追加で読み込むやつ
+// MARK: - 一番下までスクロールしたときに追加で読み込む
 extension PostTableViewController {
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

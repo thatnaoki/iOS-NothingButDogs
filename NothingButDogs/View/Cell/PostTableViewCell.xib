@@ -41,11 +41,22 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOr-8T-YgT">
                         <rect key="frame" x="250" y="444" width="30" height="30"/>
                         <state key="normal" title="Like"/>
+                        <connections>
+                            <action selector="likeButtonPressed:" destination="4y0-fI-EAP" eventType="touchUpInside" id="PEI-TG-oMA"/>
+                        </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddx-46-Bat">
+                        <rect key="frame" x="40" y="444" width="39.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="ddx-46-Bat" firstAttribute="top" secondItem="vdo-4P-P8d" secondAttribute="bottom" constant="8" id="AFW-bb-JLC"/>
                     <constraint firstAttribute="trailing" secondItem="iOr-8T-YgT" secondAttribute="trailing" constant="40" id="Hzb-fz-FUE"/>
                     <constraint firstAttribute="bottom" secondItem="vdo-4P-P8d" secondAttribute="bottom" constant="43.5" id="QhC-2f-0jX"/>
+                    <constraint firstItem="ddx-46-Bat" firstAttribute="leading" secondItem="pxZ-Tg-FGP" secondAttribute="leading" constant="40" id="TKD-VW-82U"/>
                     <constraint firstItem="vdo-4P-P8d" firstAttribute="top" secondItem="3Ti-8q-iS4" secondAttribute="bottom" constant="8.5" id="Vol-fh-4Eo"/>
                     <constraint firstItem="iOr-8T-YgT" firstAttribute="top" secondItem="vdo-4P-P8d" secondAttribute="bottom" constant="8" id="WxM-7w-cja"/>
                     <constraint firstAttribute="trailing" secondItem="a92-aJ-QZ3" secondAttribute="trailing" constant="8" id="ZGW-AY-AZG"/>
@@ -60,6 +71,7 @@
             <viewLayoutGuide key="safeArea" id="gnq-qK-cTx"/>
             <connections>
                 <outlet property="createdAt" destination="a92-aJ-QZ3" id="9gn-2G-UAj"/>
+                <outlet property="numberOfLikeLabel" destination="ddx-46-Bat" id="Xox-rc-eW6"/>
                 <outlet property="postImage" destination="vdo-4P-P8d" id="Yxh-qb-a7V"/>
                 <outlet property="userName" destination="3Ti-8q-iS4" id="uLZ-YG-1eb"/>
             </connections>

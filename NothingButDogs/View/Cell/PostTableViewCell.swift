@@ -11,9 +11,13 @@ import Firebase
 
 class PostTableViewCell: UITableViewCell {
 
+    var documentId : String?
+    var numberOfLikeForView: Int?
+    
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var createdAt: UILabel!
     @IBOutlet weak var postImage: UIImageView!
+    @IBOutlet weak var numberOfLikeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,5 +30,32 @@ class PostTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
+    @IBAction func likeButtonPressed(_ sender: UIButton) {
+        
+        var numberOfLike: Int?
+        guard let documentId = documentId else { return }
+        let docRef = db.collection("posts").document(documentId)
+        print(documentId)
+        DispatchQueue.global().async {
+            docRef.getDocument { (snapshot, error) in
+                if let data = snapshot?.data() {
+                    print(data["numberOfLike"])
+                    numberOfLike = data["numberOfLike"] as? Int
+                    self.numberOfLikeForView = numberOfLike
+                    print(numberOfLike)
+                    docRef.updateData([
+                        "numberOfLike" : numberOfLike! + 1
+                    ]) { error in
+                        if let error = error {
+                            print("error updating document \(error)")
+                        } else {
+                            print("Document successfully updated")
+                            self.numberOfLikeForView! += 1
+                            self.numberOfLikeLabel.text = "\(String(self.numberOfLikeForView!)) Likes"
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

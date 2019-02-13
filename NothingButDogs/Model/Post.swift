@@ -14,5 +14,7 @@ struct Post {
     var userName: String
     var postImageURL: String
     var createdAt: String
+    var documentId: String
+    var numberOfLike: Int
     
 }

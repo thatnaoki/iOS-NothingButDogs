@@ -93,6 +93,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         group.notify(queue: .main) {
         
             SVProgressHUD.dismiss()
+            print("presentingViewController -> \(self.presentingViewController?.presentingViewController)")
             self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
             
         }
