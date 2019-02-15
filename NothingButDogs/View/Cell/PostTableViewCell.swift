@@ -12,7 +12,6 @@ import Firebase
 class PostTableViewCell: UITableViewCell {
 
     var documentId : String?
-    var numberOfLikeForView: Int?
     
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var createdAt: UILabel!
@@ -26,12 +25,23 @@ class PostTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    var post: Post? {
         
-        // Configure the view for the selected state
+        didSet {
+            print("didset called")
+            guard let post = post else {return}
+            self.documentId = post.documentId
+            self.userName.text = post.userName
+            self.createdAt.text = post.createdAt
+            self.numberOfLikeLabel.text = "\(post.numberOfLike!) Likes"
+            self.postImage!.cacheImage(imageUrlString: post.postImageURL!)
+        }
     }
     
     @IBAction func likeButtonPressed(_ sender: UIButton) {
-        
+        print("likebuttonpressed")
         var numberOfLike: Int?
         guard let documentId = documentId else { return }
         let docRef = db.collection("posts").document(documentId)
@@ -39,10 +49,8 @@ class PostTableViewCell: UITableViewCell {
         DispatchQueue.global().async {
             docRef.getDocument { (snapshot, error) in
                 if let data = snapshot?.data() {
-                    print(data["numberOfLike"])
+                    print(data["numberOfLike"]!)
                     numberOfLike = data["numberOfLike"] as? Int
-                    self.numberOfLikeForView = numberOfLike
-                    print(numberOfLike)
                     docRef.updateData([
                         "numberOfLike" : numberOfLike! + 1
                     ]) { error in
@@ -50,8 +58,10 @@ class PostTableViewCell: UITableViewCell {
                             print("error updating document \(error)")
                         } else {
                             print("Document successfully updated")
-                            self.numberOfLikeForView! += 1
-                            self.numberOfLikeLabel.text = "\(String(self.numberOfLikeForView!)) Likes"
+                            self.post?.numberOfLike! += 1
+                            print("a")
+                            self.numberOfLikeLabel.text = "\(self.post!.numberOfLike!) Likes"
+                            print("b")
                         }
                     }
                 }

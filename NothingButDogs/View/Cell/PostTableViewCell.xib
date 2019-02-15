@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="479.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vdo-4P-P8d">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vdo-4P-P8d" customClass="MyImageView" customModule="NothingButDogs" customModuleProvider="target">
                         <rect key="frame" x="8" y="76" width="304" height="360"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="360" id="ixV-Y9-iPm"/>

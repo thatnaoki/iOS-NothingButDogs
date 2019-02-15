@@ -8,7 +8,6 @@
 
 import UIKit
 import SVProgressHUD
-import AlamofireImage
 
 class PostTableViewController: UITableViewController {
     
@@ -53,8 +52,6 @@ class PostTableViewController: UITableViewController {
 //                self.refreshControl?.endRefreshing()
 //            }
 //        }
-//
-//
 //    }
     
     //MARK: データが揃ってから、グローバルのarrayにセットしてreloadする
@@ -106,12 +103,12 @@ class PostTableViewController: UITableViewController {
                                 let userName = data["userName"] as? String
                                 
                                 let post = Post(
-                                    userId: userId!,
-                                    userName: userName!,
-                                    postImageURL: postImage!,
-                                    createdAt: createdAt!,
+                                    userId: userId,
+                                    userName: userName,
+                                    postImageURL: postImage,
+                                    createdAt: createdAt,
                                     documentId: documentId,
-                                    numberOfLike: numberOfLike!
+                                    numberOfLike: numberOfLike
                                 )
                                 posts.append(post)
                                 group.leave()
@@ -138,7 +135,7 @@ class PostTableViewController: UITableViewController {
                 guard let lastSnapshot = snapshot.documents.last else {
                     return
                 }
-                let postsColRef = db.collection("posts").order(by: "timestamp", descending: true).start(afterDocument: lastSnapshot).limit(to: 2)
+                let postsColRef = db.collection("posts").order(by: "timestamp", descending: true).start(afterDocument: lastSnapshot).limit(to: 3)
                 
                 let group = DispatchGroup()
                 
@@ -211,32 +208,7 @@ extension PostTableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
         
-        let post = postArray[indexPath.row]
-        // 画像を取得して挿入
-        if let postImageURL = URL(string: post.postImageURL) {
-            
-            cell.postImage.af_setImage(withURL: postImageURL, placeholderImage: UIImage(named: "placeholder.png"))
-            // Data(contentsOf)は同期処理なので非同期にする
-            //            DispatchQueue.global().async {
-            //                do {
-            //                    let data = try Data(contentsOf: postImageURL)
-            //                    DispatchQueue.main.async {
-            //                        cell.postImage.image = UIImage(data: data)
-            //                    }
-            //                } catch let err {
-            //                    print("Error : \(err.localizedDescription)")
-            //                }
-            //            }
-            
-        }
-        
-        cell.userName.text = post.userName
-        
-        cell.createdAt.text = post.createdAt
-        
-        cell.documentId = post.documentId
-        
-        cell.numberOfLikeLabel.text = "\(post.numberOfLike) Likes"
+        cell.post = postArray[indexPath.row]
         
         return cell
     }
@@ -258,21 +230,20 @@ extension PostTableViewController {
 extension PostTableViewController {
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
-        let currentOffsetY = scrollView.contentOffset.y
-        let maximumOffset = scrollView.contentSize.height - scrollView.frame.height
-        let distanceToBottom = maximumOffset - currentOffsetY
-        if !self.loadStatus && distanceToBottom < -50 {
-            print(currentOffsetY)
-            print(maximumOffset)
-            print(distanceToBottom)
-            print("distanceToBottom=0の状態")
-            self.loadStatus = true
-            updateView()
-        } else {
+//        print(fetchCount)
+        if fetchCount > 5 {
             return
+        } else {
+            let currentOffsetY = scrollView.contentOffset.y
+            let maximumOffset = scrollView.contentSize.height - scrollView.frame.height
+            let distanceToBottom = maximumOffset - currentOffsetY
+            if !self.loadStatus && distanceToBottom < -50 {
+                print("distanceToBottom=0の状態")
+                self.loadStatus = true
+                updateView()
+            } else {
+                return
+            }
         }
-
     }
-
 }
