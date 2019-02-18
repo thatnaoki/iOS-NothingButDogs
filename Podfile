@@ -13,5 +13,7 @@ target 'NothingButDogs' do
   pod 'Firebase/Storage'
   pod 'SVProgressHUD'
   pod 'AlamofireImage'
+  pod 'MaterialComponents'
+  
 
 end

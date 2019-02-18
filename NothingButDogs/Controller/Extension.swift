@@ -8,12 +8,13 @@
 
 import UIKit
 
+// よく使う系
 extension UIViewController {
-
+    // keyboard以外をタップしたときにkeyboard閉じるメソッド
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
+    // アラート出せるメソッド
     func showAlert(message: String) {
         
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
@@ -30,6 +31,7 @@ extension UIViewController {
     
 }
 
+// 画像をキャッシュするためのextension
 extension UIImageView {
     
     static let imageCache = NSCache<AnyObject, AnyObject>()
@@ -45,7 +47,7 @@ extension UIImageView {
         
         self.image = UIImage(named: "placeholder")
         
-        URLSession.shared.dataTask(with: url!) { (data, urlResponse, error) in
+        URLSession.shared.dataTask(with: url!) { (data, response, error) in
             
             if error != nil {
                 print(error!)
@@ -63,3 +65,4 @@ extension UIImageView {
         }.resume()
     }
 }
+

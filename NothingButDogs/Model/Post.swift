@@ -24,6 +24,7 @@ class Post {
         self.postImageURL = postImageURL
         self.documentId = documentId
         self.numberOfLike = numberOfLike
+        self.createdAt = createdAt
         
     }
     

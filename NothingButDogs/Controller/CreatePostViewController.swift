@@ -62,10 +62,8 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
     @IBAction func shareButtonPressed(_ sender: UIButton) {
         
         SVProgressHUD.show()
-        let group = DispatchGroup()
+        //データベースへの保存
         setDataToStorage(postImage.image!) {urlString, _ in
-            group.enter()
-            //データベースへの保存
             //Dateの用意
             let f = DateFormatter()
             f.dateStyle = .medium
@@ -84,21 +82,17 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                     "createdAt" : f.string(from: now),
                     "timestamp": FieldValue.serverTimestamp()
                     ])
-            
             }
-            
-            group.leave()
-        
-        }
-        group.notify(queue: .main) {
-        
+    
             SVProgressHUD.dismiss()
-            print("presentingViewController -> \(self.presentingViewController?.presentingViewController)")
-            self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
-            
+            self.navigationController?.popToViewController((self.navigationController?.viewControllers[0])!, animated: true)
         }
-
     }
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        
+    }
+    
 
 }
 

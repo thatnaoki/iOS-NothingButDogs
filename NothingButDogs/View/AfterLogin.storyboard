@@ -134,6 +134,13 @@
                                     <action selector="updateButtonPressed:" destination="6Rl-iw-Dsa" eventType="touchUpInside" id="mI4-Gh-ynq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WY9-K9-NYV">
+                                <rect key="frame" x="170.5" y="568" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="NXG-NN-u1p" eventType="touchUpInside" id="DIp-gW-eZw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -141,7 +148,9 @@
                             <constraint firstItem="i4h-YW-fXp" firstAttribute="centerX" secondItem="pOI-wP-etk" secondAttribute="centerX" id="NYR-4F-nKW"/>
                             <constraint firstItem="qwW-dV-8Cq" firstAttribute="top" secondItem="eS5-tx-Ze3" secondAttribute="bottom" constant="40" id="SST-GU-r6o"/>
                             <constraint firstItem="2Iv-GM-Txa" firstAttribute="centerX" secondItem="pOI-wP-etk" secondAttribute="centerX" id="TFY-Hm-a8f"/>
+                            <constraint firstItem="L0f-Cj-XgB" firstAttribute="bottom" secondItem="WY9-K9-NYV" secondAttribute="bottom" constant="20" id="WHJ-Oe-nei"/>
                             <constraint firstItem="qwW-dV-8Cq" firstAttribute="centerX" secondItem="pOI-wP-etk" secondAttribute="centerX" id="YMj-pm-iBC"/>
+                            <constraint firstItem="WY9-K9-NYV" firstAttribute="centerX" secondItem="pOI-wP-etk" secondAttribute="centerX" id="bKD-MY-cQB"/>
                             <constraint firstItem="eS5-tx-Ze3" firstAttribute="leading" secondItem="L0f-Cj-XgB" secondAttribute="leading" id="env-5h-srG"/>
                             <constraint firstItem="L0f-Cj-XgB" firstAttribute="bottom" secondItem="2Iv-GM-Txa" secondAttribute="bottom" constant="85" id="kRU-Mx-DbW"/>
                             <constraint firstItem="eS5-tx-Ze3" firstAttribute="top" secondItem="L0f-Cj-XgB" secondAttribute="top" id="qMy-2S-Lcm"/>
@@ -222,7 +231,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="WtR-JA-Hma">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DvR-6U-irE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="DKX-XO-oiQ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wmj-B6-Hbu">
@@ -235,6 +243,7 @@
                         <segue destination="6Rl-iw-Dsa" kind="relationship" relationship="viewControllers" id="LW9-qP-RKi"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DvR-6U-irE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2786" y="134"/>
         </scene>

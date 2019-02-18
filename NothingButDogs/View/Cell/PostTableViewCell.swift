@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import MaterialComponents.MaterialButtons
 
 class PostTableViewCell: UITableViewCell {
 
@@ -17,10 +18,13 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var createdAt: UILabel!
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var numberOfLikeLabel: UILabel!
+    @IBOutlet weak var likeButton: MDCButton!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,14 +32,13 @@ class PostTableViewCell: UITableViewCell {
     }
     
     var post: Post? {
-        
         didSet {
-            print("didset called")
             guard let post = post else {return}
             self.documentId = post.documentId
             self.userName.text = post.userName
             self.createdAt.text = post.createdAt
             self.numberOfLikeLabel.text = "\(post.numberOfLike!) Likes"
+            // キャッシュがあればキャッシュで、なければURLから取得
             self.postImage!.cacheImage(imageUrlString: post.postImageURL!)
         }
     }
@@ -57,11 +60,8 @@ class PostTableViewCell: UITableViewCell {
                         if let error = error {
                             print("error updating document \(error)")
                         } else {
-                            print("Document successfully updated")
                             self.post?.numberOfLike! += 1
-                            print("a")
                             self.numberOfLikeLabel.text = "\(self.post!.numberOfLike!) Likes"
-                            print("b")
                         }
                     }
                 }
