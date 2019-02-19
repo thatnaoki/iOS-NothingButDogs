@@ -27,7 +27,7 @@
 		B0F192192202A08500894726 /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F192182202A08500894726 /* ChooseImageViewController.swift */; };
 		B0F1921B2202A7DF00894726 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1921A2202A7DF00894726 /* CreatePostViewController.swift */; };
 		B0F1921D2202D1AE00894726 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B0F1921C2202D1AE00894726 /* Inceptionv3.mlmodel */; };
-		B0F5ABDE2209C88C00C03031 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0F5ABDD2209C88C00C03031 /* Images.xcassets */; };
+		B0F5ABDE2209C88C00C03031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0F5ABDD2209C88C00C03031 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +54,7 @@
 		B0F192182202A08500894726 /* ChooseImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		B0F1921A2202A7DF00894726 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		B0F1921C2202D1AE00894726 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
-		B0F5ABDD2209C88C00C03031 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B0F5ABDD2209C88C00C03031 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9867E55F99C095A10A8BCD0 /* Pods-NothingButDogs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NothingButDogs.release.xcconfig"; path = "Pods/Target Support Files/Pods-NothingButDogs/Pods-NothingButDogs.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,7 +106,7 @@
 				B0F1921C2202D1AE00894726 /* Inceptionv3.mlmodel */,
 				B0B7D4F62216FECA0093BA00 /* GoogleService-Info.plist */,
 				B0F191FE22028C2400894726 /* Info.plist */,
-				B0F5ABDD2209C88C00C03031 /* Images.xcassets */,
+				B0F5ABDD2209C88C00C03031 /* Assets.xcassets */,
 			);
 			path = NothingButDogs;
 			sourceTree = "<group>";
@@ -227,7 +227,7 @@
 			files = (
 				B0F191FD22028C2400894726 /* LaunchScreen.storyboard in Resources */,
 				B01E545C220D731900B3B8F0 /* AfterLogin.storyboard in Resources */,
-				B0F5ABDE2209C88C00C03031 /* Images.xcassets in Resources */,
+				B0F5ABDE2209C88C00C03031 /* Assets.xcassets in Resources */,
 				B0F191F822028C2200894726 /* BeforeLogin.storyboard in Resources */,
 				B0F1920F22028D9900894726 /* PostTableViewCell.xib in Resources */,
 				B0B7D4F72216FECB0093BA00 /* GoogleService-Info.plist in Resources */,
@@ -479,6 +479,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A9098A2228D552239337A5AD /* Pods-NothingButDogs.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S2X27Q955V;
 				INFOPLIST_FILE = NothingButDogs/Info.plist;
@@ -497,6 +498,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E9867E55F99C095A10A8BCD0 /* Pods-NothingButDogs.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S2X27Q955V;
 				INFOPLIST_FILE = NothingButDogs/Info.plist;

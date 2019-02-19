@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Welcome-->
+        <!--Sign In-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SigninViewController" customModule="NothingButDogs" customModuleProvider="target" sceneMemberID="viewController">
@@ -66,7 +66,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Signin"/>
+                                <state key="normal" title="Sign In"/>
                                 <connections>
                                     <action selector="signinButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QVh-Jq-liG"/>
                                 </connections>
@@ -89,7 +89,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Welcome" id="IVK-RL-J3t"/>
+                    <navigationItem key="navigationItem" title="Sign In" id="IVK-RL-J3t"/>
                     <connections>
                         <outlet property="emailTextField" destination="G8y-kQ-fhV" id="S4v-Lc-bTu"/>
                         <outlet property="passwordTextField" destination="NuG-cG-ktM" id="qPz-li-3jF"/>
@@ -119,7 +119,7 @@
             </objects>
             <point key="canvasLocation" x="129" y="134"/>
         </scene>
-        <!--Welcome-->
+        <!--Sign Up-->
         <scene sceneID="St6-k8-vDy">
             <objects>
                 <viewController id="Sjx-aK-scV" customClass="SignupViewController" customModule="NothingButDogs" customModuleProvider="target" sceneMemberID="viewController">
@@ -152,7 +152,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Signup"/>
+                                <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <action selector="signupButtonPressed:" destination="Sjx-aK-scV" eventType="touchUpInside" id="iAo-Tq-cff"/>
                                 </connections>
@@ -211,7 +211,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6uS-HD-umr"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Welcome" id="iHj-xl-uaO"/>
+                    <navigationItem key="navigationItem" title="Sign Up" id="iHj-xl-uaO"/>
                     <connections>
                         <outlet property="emailTextField" destination="1TY-Q3-ubu" id="BeD-6Q-PXd"/>
                         <outlet property="passwordTextField" destination="2Uq-2s-KKU" id="6sC-RL-Ftg"/>

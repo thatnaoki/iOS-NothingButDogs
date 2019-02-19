@@ -147,13 +147,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBu-LP-q2v">
-                                <rect key="frame" x="145.5" y="140" width="84" height="21"/>
+                                <rect key="frame" x="145.5" y="184" width="84" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qqw-Us-Gfe">
-                                <rect key="frame" x="67.5" y="181" width="240" height="30"/>
+                                <rect key="frame" x="67.5" y="225" width="240" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="9cU-da-Iku"/>
                                     <constraint firstAttribute="height" constant="30" id="gKS-wD-4SH"/>
@@ -188,7 +188,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="U1o-Hd-Bl3"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile" id="VVf-uA-nsT"/>
+                    <navigationItem key="navigationItem" title="Profile" id="R6f-Uo-U2b">
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="pPU-c8-Mbb">
+                            <connections>
+                                <action selector="signoutButtonPressed:" destination="6Rl-iw-Dsa" id="RS8-Z8-R9H"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="updateButton" destination="fEn-zb-mfR" id="nuX-JF-CQE"/>
                         <outlet property="userNameTextField" destination="qqw-Us-Gfe" id="FEx-ZM-ayF"/>
@@ -196,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylE-xF-oa1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4596" y="699"/>
+            <point key="canvasLocation" x="5535.1999999999998" y="698.5007496251875"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WtR-JA-Hma">
@@ -210,7 +216,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="7k8-hD-ORS" kind="relationship" relationship="viewControllers" id="G8t-1a-Wf2"/>
-                        <segue destination="6Rl-iw-Dsa" kind="relationship" relationship="viewControllers" id="LW9-qP-RKi"/>
+                        <segue destination="X5P-zG-PoI" kind="relationship" relationship="viewControllers" id="LW9-qP-RKi"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DvR-6U-irE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -236,9 +242,28 @@
             </objects>
             <point key="canvasLocation" x="4596" y="-631.0344827586207"/>
         </scene>
+        <!--Profile-->
+        <scene sceneID="1Xj-Be-drU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X5P-zG-PoI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile" id="VVf-uA-nsT"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sYm-1f-BsC">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6Rl-iw-Dsa" kind="relationship" relationship="rootViewController" id="ygu-Sa-e2V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GGP-pg-se0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4596" y="698.5007496251875"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="home" width="14.399999618530273" height="14.399999618530273"/>
+        <image name="home" width="36" height="36"/>
         <image name="profile" width="36" height="36"/>
     </resources>
 </document>

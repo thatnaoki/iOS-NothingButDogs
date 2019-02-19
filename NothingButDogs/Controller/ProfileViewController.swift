@@ -10,6 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController, UITextFieldDelegate {
 
+    // reference to document
     let docRef = db.collection("users").document((auth.currentUser?.uid)!)
     
     @IBOutlet weak var updateButton: UIButton!
@@ -19,9 +20,13 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // button layout
         updateButton.layer.cornerRadius = 20.0
+        
+        // set delegate
         userNameTextField.delegate = self
         
+        // get data from firestore
         docRef.getDocument() { (document, error) in
             
             if let document = document, document.exists {
@@ -36,7 +41,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
+    // MARK: button actions
     @IBAction func updateButtonPressed(_ sender: UIButton) {
         
         if userNameTextField.text != "" {
@@ -63,8 +68,20 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //MARK: キーボード閉じる用
+    // signout
+    @IBAction func signoutButtonPressed(_ sender: UIBarButtonItem) {
+        do {
+            try auth.signOut()
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showWelcomeStroyboard()
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
     
+    
+    // close keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         userNameTextField.resignFirstResponder()

@@ -28,13 +28,15 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         postImage.image = self.cropRect(image: choosenImage)
     }
     
+    // MARK: functions
+    // save data to storage
     func setDataToStorage(_ image: UIImage, completion: @escaping (String?, Error?)->Void) {
         
         if let imageData = postImage.image!.jpegData(compressionQuality: 0.8) {
-            //ファイル名生成
+            // create file name
             let imageName = NSUUID().uuidString
             
-            //Storageへの保存
+            // save to storage
             let reference = storage.reference().child("images/" + imageName + ".jpg")
             reference.putData(imageData, metadata: nil, completion: { metaData, error in
                 
@@ -57,11 +59,11 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
+    // MARK: button actions
     @IBAction func shareButtonPressed(_ sender: UIButton) {
         
         SVProgressHUD.show()
-        //データベースへの保存
+        // save to database
         setDataToStorage(postImage.image!) {urlString, _ in
             //Dateの用意
             let f = DateFormatter()
@@ -90,13 +92,13 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
 
 extension CreatePostViewController {
     
-    // 画像を正方形にクロップする.
+    // crop a photo
     private func cropRect(image: UIImage) -> UIImage {
         
-        // 加工対象の画像.
+        // argument
         var image = image
         
-        // 天地が反転している場合があるので、対応しておく.
+        // make sure a photo looks correct
         UIGraphicsBeginImageContext(image.size)
         image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
         if let _image = UIGraphicsGetImageFromCurrentImageContext() {
@@ -104,18 +106,18 @@ extension CreatePostViewController {
         }
         UIGraphicsEndImageContext()
         
-        // 正方形にクロップする.
+        // cropping
         if image.size.width != image.size.height {
             var x: CGFloat = 0
             var y: CGFloat = 0
             var w = image.size.width
             var h = image.size.height
             if w > h {
-                // 横長の場合.
+                // if a photo is landscape
                 x = (w - h) / 2
                 w = h
             } else {
-                // 縦長の場合.
+                // if a photo is portrait
                 y = (h - w) / 2
                 h = w
             }
@@ -123,7 +125,7 @@ extension CreatePostViewController {
             image = UIImage(cgImage: cgImage!)
         }
         
-        // サイズが大きすぎても困るので、小さくしておく.
+        // make photo small
         let newSize = CGSize(width: 720, height: 720)
         UIGraphicsBeginImageContext(newSize)
         image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
@@ -132,7 +134,7 @@ extension CreatePostViewController {
         }
         UIGraphicsEndImageContext()
         
-        // 返却する.
+        // return
         return image
     }
 }

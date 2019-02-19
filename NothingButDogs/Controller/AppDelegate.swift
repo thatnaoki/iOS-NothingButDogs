@@ -46,6 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc = UIStoryboard(name: "AfterLogin", bundle: nil).instantiateInitialViewController()
         UIApplication.shared.keyWindow?.rootViewController = vc
     }
+    
+    func showWelcomeStroyboard() {
+        let vc = UIStoryboard(name: "BeforeLogin", bundle: nil).instantiateInitialViewController()
+        UIApplication.shared.keyWindow?.rootViewController = vc
+        
+    }
 
 }
 
