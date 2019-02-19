@@ -20,16 +20,11 @@ class PostTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //バックボタン隠す
+        // hide back button on navigation bar
         self.navigationItem.backBarButtonItem = nil
         self.navigationItem.hidesBackButton = true
         
-        //プルリフレッシュ
-//        self.refreshControl = UIRefreshControl()
-//        refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
-//        self.tableView.addSubview(self.refreshControl!)
-        
-        //tableView初期化
+        // configure tableview
         configureTableview()
     }
     
@@ -39,26 +34,10 @@ class PostTableViewController: UITableViewController {
         updateView()
     }
     
-//    @objc func pullToRefresh() {
-//
-//        print("removeAll()")
-//        postArray.removeAll()
-//        fetchCount = 0
-//        DispatchQueue.main.async {
-//            print("updateView()")
-//            self.updateView()
-//            DispatchQueue.main.async {
-//                print("endRefreshing()")
-//                self.refreshControl?.endRefreshing()
-//            }
-//        }
-//    }
-    
-    //MARK: データが揃ってから、グローバルのarrayにセットしてreloadする
+    // MARK: functions
+    // set data to postArray and reload
     func updateView() {
-        
         SVProgressHUD.show()
-        
         fetchData() { posts in
             self.postArray = self.postArray + posts
             print("in updateView() -> \(self.postArray)")
@@ -66,15 +45,14 @@ class PostTableViewController: UITableViewController {
             self.loadStatus = false
             SVProgressHUD.dismiss()
         }
-
     }
     
-    //MARK: データベースからポストを取得する
-    //配列化する、理想は返す件数を指定できる仕様
+    // get data from firestore
     func fetchData(completion: @escaping ([Post]) -> Void) {
         
         var posts: [Post] = []
         
+        // if this is first reload
         if self.fetchCount == 0{
             
             let postsColRef = db.collection("posts").order(by: "timestamp", descending: true).limit(to: 5)
@@ -93,9 +71,9 @@ class PostTableViewController: UITableViewController {
                         let postImage = data["postImageURL"] as? String
                         let createdAt = data["createdAt"] as? String
                         let numberOfLike = data["numberOfLike"] as? Int
-                        //投稿に紐づくユーザーデータを取得して合わせてpostArrayに挿入
+                        // reference to document
                         let docRef = db.collection("users").document(userId!)
-                        
+                        // get document
                         docRef.getDocument() { (document, error) in
                             if let document = document, document.exists {
                                 
@@ -115,7 +93,7 @@ class PostTableViewController: UITableViewController {
                             }
                         }
                     }
-                    //配列化してクロージャに渡す
+                    // create list type and pass it to closure
                     group.notify(queue: .main) {
                         print("infetchData()\(posts)")
                         self.fetchCount += 1
@@ -123,6 +101,7 @@ class PostTableViewController: UITableViewController {
                     }
                 }
             }
+        // if this is not first reload
         } else if self.fetchCount > 0 {
 
             let first = db.collection("posts").order(by: "timestamp", descending: true).limit(to: 5 * self.fetchCount)
@@ -151,9 +130,10 @@ class PostTableViewController: UITableViewController {
                             let postImage = data["postImageURL"] as? String
                             let createdAt = data["createdAt"] as? String
                             let numberOfLike = data["numberOfLike"] as? Int
-                            //投稿に紐づくユーザーデータを取得して合わせてpostArrayに挿入
-                            let docRef = db.collection("users").document(userId!)
                             
+                            // reference to document
+                            let docRef = db.collection("users").document(userId!)
+                            // get document
                             docRef.getDocument() { (document, error) in
                                 if let document = document, document.exists {
                                     
@@ -173,9 +153,8 @@ class PostTableViewController: UITableViewController {
                                 }
                             }
                         }
-                        //配列化してクロージャに渡す
+                        // create list type and pass it to closure
                         group.notify(queue: .main) {
-//                            print(posts)
                             self.fetchCount += 1
                             completion(posts)
                         }
@@ -185,10 +164,10 @@ class PostTableViewController: UITableViewController {
         }
     }
 
+    // MARK: button actions
+    // camera button pressed
     @IBAction func cameraButtonPressed(_ sender: UIBarButtonItem) {
-            
         performSegue(withIdentifier: "homeToChooseImage", sender: nil)
-            
     }
 }
 
@@ -215,7 +194,7 @@ extension PostTableViewController {
     
 }
 
-// MARK: - Table viewのlayout設定
+// MARK: configure tableview
 extension PostTableViewController {
     
     func configureTableview() {
@@ -226,7 +205,7 @@ extension PostTableViewController {
     
 }
 
-// MARK: - 一番下までスクロールしたときに追加で読み込む
+// MARK: reload when scroll to bottom
 extension PostTableViewController {
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -237,7 +216,7 @@ extension PostTableViewController {
             let currentOffsetY = scrollView.contentOffset.y
             let maximumOffset = scrollView.contentSize.height - scrollView.frame.height
             let distanceToBottom = maximumOffset - currentOffsetY
-            if !self.loadStatus && distanceToBottom < -50 {
+            if !self.loadStatus && distanceToBottom < -80 {
                 print("distanceToBottom=0の状態")
                 self.loadStatus = true
                 updateView()

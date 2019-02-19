@@ -8,7 +8,6 @@
 
 import UIKit
 import SVProgressHUD
-import Firebase
 
 class SignupViewController: UIViewController, UITextFieldDelegate {
     
@@ -20,7 +19,15 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // validation check
+        emailTextField.addTarget(self, action: #selector(formValidation), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(formValidation), for: .editingChanged)
+        
+        // button layout
+        signupButton.isEnabled = false
+        signupButton.backgroundColor = UIColor(red: 149/255, green: 204/255, blue: 244/255, alpha: 1)
         signupButton.layer.cornerRadius = 20.0
+        
         
         emailTextField.delegate = self
         usernameTextField.delegate = self
@@ -31,54 +38,64 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     @IBAction func signupButtonPressed(_ sender: Any) {
         
         SVProgressHUD.show()
-        //unwrap
-        if emailTextField.text != "" && passwordTextField.text != "" && usernameTextField.text != ""{
-            //usernameの文字数確認
-            if usernameTextField.text!.count <= 10 {
-                
-                Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-                    if error != nil {
-                        print(error!)
-                        self.showAlert(message: "Failed to save!")
-                    } else {
-                        print("Signup Successful!")
-                        
-                        //Firebaseでuser document作成
-                        let user = Auth.auth().currentUser
-                        
-                        if let user = user {
-                            db.collection("users").document(user.uid).setData([
-                                "userName" : self.usernameTextField.text!
-                                ])
-                        }
-                        SVProgressHUD.dismiss()
-                        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                            appDelegate.showTimelineStoryboard()
-                        }
-                    }
+        //usernameの文字数確認
+        if usernameTextField.text!.count <= 10 {
+            
+            auth.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+                if error != nil {
+                    print(error!)
+                    self.showAlert(message: "Failed to save!")
+                    return
+                } else {
+                    print("Signup Successful!")
+                    
+                    // get uid
+                    guard let uid = auth.currentUser?.uid else {return}
+                    
+                    // create user document
+                    db.collection("users").document(uid).setData([
+                        "userName" : self.usernameTextField.text!
+                    ])
                 }
-            } else {
-                //名前が11文字以上の場合
-                self.showAlert(message: "Names should be in 10 characters or less.")
+                SVProgressHUD.dismiss()
+                // go to timeline
+                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appDelegate.showTimelineStoryboard()
+                }
             }
         } else {
-            //3つのどれかがnilだったとき
-            SVProgressHUD.dismiss()
-            self.showAlert(message: "You need to fill everything!")
+            // if name characters are more than 10
+            self.showAlert(message: "Names should be in 10 characters or less.")
             return
         }
-        
-        
-        
     }
     
-    //MARK: キーボード閉じる用    
+    //MARK: functions
+    // close keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         usernameTextField.resignFirstResponder()
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         return true
+        
+    }
+    
+    // validation check
+    @objc func formValidation() {
+        
+        guard
+            emailTextField.hasText,
+            passwordTextField.hasText else {
+                // handle case for above conditions not met
+                signupButton.isEnabled = false
+                signupButton.backgroundColor = UIColor(red: 149/255, green: 204/255, blue: 244/255, alpha: 1)
+                return
+        }
+        
+        // handle case for conditions were met
+        signupButton.isEnabled = true
+        signupButton.backgroundColor = UIColor(red: 17/255, green: 154/255, blue: 237/255, alpha: 1)
         
     }
     

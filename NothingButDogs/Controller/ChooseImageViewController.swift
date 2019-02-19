@@ -19,51 +19,17 @@ class ChooseImageViewController: UIViewController, UINavigationControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // set delegate
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         
+        // hide next button
         self.nextButton.tintColor = UIColor.clear
         
-        //カメラかライブラリかを選択させるAlertController
-        //カメラから
-        let alertController = UIAlertController(title: "", message: "Camera or Library", preferredStyle: .actionSheet)
+        // show actionsheet
+        showActionsheet()
         
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            
-            let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: { (action: UIAlertAction) in
-                
-                self.imagePicker.sourceType = .camera
-                self.imagePicker.delegate = self
-                self.present(self.imagePicker, animated: true, completion: nil)
-                
-            })
-            
-            alertController.addAction(cameraAction)
-            
-        }
-        //ライブラリ
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            
-            let photoLibraryAction = UIAlertAction(title: "Library", style: .default, handler: { (action: UIAlertAction) in
-                
-                self.imagePicker.sourceType = .photoLibrary
-                self.imagePicker.delegate = self
-                self.present(self.imagePicker, animated: true, completion: nil)
-                
-            })
-            
-            alertController.addAction(photoLibraryAction)
-            
-        }
-        //キャンセル用意
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        alertController.addAction(cancelAction)
-        
-        alertController.popoverPresentationController?.sourceView = view
-        
-        present(alertController, animated: true, completion: nil)
     }
     
     
@@ -107,6 +73,55 @@ class ChooseImageViewController: UIViewController, UINavigationControllerDelegat
     @IBAction func nextPressed(_ sender: UIBarButtonItem) {
         
         performSegue(withIdentifier: "goToCreatePost", sender: nil)
+        
+    }
+    
+    // prepare actionsheet
+    func showActionsheet() {
+        
+        // actionsheet
+        // for camera
+        let alertController = UIAlertController(title: "", message: "Camera or Library", preferredStyle: .actionSheet)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            
+            let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: { (action: UIAlertAction) in
+                
+                self.imagePicker.sourceType = .camera
+                self.imagePicker.delegate = self
+                self.present(self.imagePicker, animated: true, completion: nil)
+                
+            })
+            
+            alertController.addAction(cameraAction)
+            
+        }
+        // for library
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            
+            let photoLibraryAction = UIAlertAction(title: "Library", style: .default, handler: { (action: UIAlertAction) in
+                
+                self.imagePicker.sourceType = .photoLibrary
+                self.imagePicker.delegate = self
+                self.present(self.imagePicker, animated: true, completion: nil)
+                
+            })
+            
+            alertController.addAction(photoLibraryAction)
+            
+        }
+        // cancel
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            self.navigationController?.popToViewController((self.navigationController?.viewControllers[0])!, animated: true)
+        }
+        
+        alertController.addAction(cancelAction)
+        
+        alertController.popoverPresentationController?.sourceView = view
+        
+        present(alertController, animated: true, completion: nil)
         
     }
 

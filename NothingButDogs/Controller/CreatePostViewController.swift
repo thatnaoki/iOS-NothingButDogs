@@ -14,7 +14,6 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
 
     var choosenImage: UIImage?
     @IBOutlet weak var postImage: UIImageView!
-    @IBOutlet weak var postTextField: UITextField!
     @IBOutlet weak var shareButton: UIButton!
     
     override func viewDidLoad() {
@@ -67,7 +66,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
             //Dateの用意
             let f = DateFormatter()
             f.dateStyle = .medium
-            f.timeStyle = .medium
+            f.timeStyle = .short
             let now = Date()
             //ログイン中のユーザー取得
             let user = auth.currentUser
@@ -77,7 +76,6 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                 db.collection("posts").document().setData([
                     "userId" : user.uid,
                     "postImageURL" : urlString!,
-                    "postText" : self.postTextField.text!,
                     "numberOfLike" : 0,
                     "createdAt" : f.string(from: now),
                     "timestamp": FieldValue.serverTimestamp()
@@ -88,24 +86,6 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
             self.navigationController?.popToViewController((self.navigationController?.viewControllers[0])!, animated: true)
         }
     }
-    
-    @IBAction func backButtonPressed(_ sender: UIButton) {
-        
-    }
-    
-
-}
-
-//MARK: キーボード閉じる系
-extension CreatePostViewController {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        postTextField.resignFirstResponder()
-        return true
-        
-    }
-    
 }
 
 extension CreatePostViewController {

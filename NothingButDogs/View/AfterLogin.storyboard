@@ -103,22 +103,6 @@
                                     <constraint firstAttribute="width" constant="375" id="qYD-Zz-dqH"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write some captions!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwW-dV-8Cq">
-                                <rect key="frame" x="95.5" y="404" width="184" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i4h-YW-fXp">
-                                <rect key="frame" x="37.5" y="438" width="300" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="9eh-Rk-PXU"/>
-                                    <constraint firstAttribute="height" constant="30" id="ARg-Jd-fwF"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Iv-GM-Txa">
                                 <rect key="frame" x="112.5" y="493" width="150" height="40"/>
                                 <color key="backgroundColor" red="0.018645260479999998" green="0.4776622653" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -134,23 +118,10 @@
                                     <action selector="updateButtonPressed:" destination="6Rl-iw-Dsa" eventType="touchUpInside" id="mI4-Gh-ynq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WY9-K9-NYV">
-                                <rect key="frame" x="170.5" y="568" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="backButtonPressed:" destination="NXG-NN-u1p" eventType="touchUpInside" id="DIp-gW-eZw"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="i4h-YW-fXp" firstAttribute="top" secondItem="qwW-dV-8Cq" secondAttribute="bottom" constant="10" id="EHk-JO-aUY"/>
-                            <constraint firstItem="i4h-YW-fXp" firstAttribute="centerX" secondItem="pOI-wP-etk" secondAttribute="centerX" id="NYR-4F-nKW"/>
-                            <constraint firstItem="qwW-dV-8Cq" firstAttribute="top" secondItem="eS5-tx-Ze3" secondAttribute="bottom" constant="40" id="SST-GU-r6o"/>
                             <constraint firstItem="2Iv-GM-Txa" firstAttribute="centerX" secondItem="pOI-wP-etk" secondAttribute="centerX" id="TFY-Hm-a8f"/>
-                            <constraint firstItem="L0f-Cj-XgB" firstAttribute="bottom" secondItem="WY9-K9-NYV" secondAttribute="bottom" constant="20" id="WHJ-Oe-nei"/>
-                            <constraint firstItem="qwW-dV-8Cq" firstAttribute="centerX" secondItem="pOI-wP-etk" secondAttribute="centerX" id="YMj-pm-iBC"/>
-                            <constraint firstItem="WY9-K9-NYV" firstAttribute="centerX" secondItem="pOI-wP-etk" secondAttribute="centerX" id="bKD-MY-cQB"/>
                             <constraint firstItem="eS5-tx-Ze3" firstAttribute="leading" secondItem="L0f-Cj-XgB" secondAttribute="leading" id="env-5h-srG"/>
                             <constraint firstItem="L0f-Cj-XgB" firstAttribute="bottom" secondItem="2Iv-GM-Txa" secondAttribute="bottom" constant="85" id="kRU-Mx-DbW"/>
                             <constraint firstItem="eS5-tx-Ze3" firstAttribute="top" secondItem="L0f-Cj-XgB" secondAttribute="top" id="qMy-2S-Lcm"/>
@@ -160,7 +131,6 @@
                     </view>
                     <connections>
                         <outlet property="postImage" destination="eS5-tx-Ze3" id="nXq-U9-7t3"/>
-                        <outlet property="postTextField" destination="i4h-YW-fXp" id="QsC-7t-Yhw"/>
                         <outlet property="shareButton" destination="2Iv-GM-Txa" id="D29-x2-zrC"/>
                     </connections>
                 </viewController>
@@ -269,6 +239,6 @@
     </scenes>
     <resources>
         <image name="home" width="14.399999618530273" height="14.399999618530273"/>
-        <image name="profile" width="14.399999618530273" height="14.399999618530273"/>
+        <image name="profile" width="36" height="36"/>
     </resources>
 </document>
