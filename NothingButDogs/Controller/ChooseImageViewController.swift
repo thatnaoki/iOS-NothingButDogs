@@ -25,7 +25,8 @@ class ChooseImageViewController: UIViewController, UINavigationControllerDelegat
         imagePicker.allowsEditing = false
         
         // hide next button
-        self.nextButton.tintColor = UIColor.clear
+        nextButton.tintColor = UIColor.clear
+        nextButton.isEnabled = false
         
         // show actionsheet
         showActionsheet()
@@ -53,9 +54,12 @@ class ChooseImageViewController: UIViewController, UINavigationControllerDelegat
                 if results[i].identifier.contains("terrier") {
                     self.navigationItem.title = "It's a Dog!"
                     self.nextButton.tintColor = UIColor.blue
+                    self.nextButton.isEnabled = true
                     break
                 } else {
                     self.navigationItem.title = "Not a Dog!"
+                    self.nextButton.tintColor = UIColor.clear
+                    self.nextButton.isEnabled = false
                 }
             }
         }
